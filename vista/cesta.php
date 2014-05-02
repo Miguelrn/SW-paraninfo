@@ -3,35 +3,29 @@
 	$BDD = new Mysql();
 
 ?>
-<div class="fijo">
-	
 
-	<div>
 		<?php 
 		if(($_SESSION['logueado'] && $_SESSION['tipo'] == 0) || ($_SESSION['logueado']) == 0){
 		?>
-		<div>
-			<form id="consulta" name="consulta" action="./muestraconsulta.php" method="post" accept-charset="utf-8">
-				<fieldset>
-					<legend>Consulta</legend>
-					<input type="date" name="fecha" required=""><br>
-					
-					<select name="zona">
-						<optgroup label="Zona">
-							<option value="norte">Norte</option>
-						    <option value="sur">Sur</option> 
-						    <option value="suroeste">Suroeste</option>
-						    <option value="seniora">Nª Señora</option>
-						    <option value="somosaguas">Somosaguas</option>
-						</optgroup>       
-					</select><br>
-					
-					<input type="submit" type="button" class="btn-xs btn-info" value="Consultar">
-					
-				</fieldset>
-			</form>
-		</div>
-	</div>
+		<form id="consulta" name="consulta" action="./muestraconsulta.php" method="post" accept-charset="utf-8">
+			<fieldset>
+				<legend>Consulta</legend>
+				<input type="date" id="fecha" name="fecha" required=""><br>
+				
+				<select name="zona">
+					<optgroup id="zona" label="Zona">
+						<option value="norte">Norte</option>
+					    <option value="sur">Sur</option> 
+					    <option value="suroeste">Suroeste</option>
+					    <option value="seniora">Nª Señora</option>
+					    <option value="somosaguas">Somosaguas</option>
+					</optgroup>       
+				</select></br>
+				
+				<input type="submit" type="button" class="btn-xs btn-info" value="Consultar">
+				
+			</fieldset>
+		</form>
 	<?php 
 		}
 		if($_SESSION['logueado'] && $_SESSION['tipo'] == 0){
@@ -54,35 +48,36 @@
 	
 	<!-- USUARIO NORMAL -->
 	</br>
-	<legend>Panel de control	</legend>
-	<button type="button" class="btn-lg btn-info" onclick="editar()">Editar Perfil</button><br>
-	<button type="button" class="btn-lg btn-info" onclick="cambiarpass()">Cambiar contraseña</button></br>
-	<button type="button" class="btn-lg btn-info" onclick="reservas()">Mi cesta</button></br>
-	<button type="button" class="btn-lg btn-info" onclick="pedidosUser()">Pedidos</button></br><!-- cambiarle el nombre es para consultar los pedidos del usuario que ya se han pagado -->
-	
+	<fieldset>
+		<legend>Panel de control</legend>
+		<button type="button" class="btn-lg btn-info" onclick="editar()">Editar Perfil</button><br>
+		<button type="button" class="btn-lg btn-info" onclick="cambiarpass()">Cambiar contraseña</button></br>
+		<button type="button" class="btn-lg btn-info" onclick="reservas()">Mi cesta</button></br>
+		<button type="button" class="btn-lg btn-info" onclick="pedidosUser()">Pedidos</button></br><!-- cambiarle el nombre es para consultar los pedidos del usuario que ya se han pagado -->
+	</fieldset>
 	
 	<?php }else if($_SESSION['logueado'] && $_SESSION['tipo'] == 1){ ?>
 		
-		<script>
-			function pedidos() {
-				$('#zona_central').load('./vista/muestraPedidos.php');
-			};
-			function usuarios() {
-				$('#zona_central').load('./vista/muestraUsuarios.php');
-			};
-			function precios(){
-				$('#zona_central').load('./vista/muestraPrecios.php');
-			}
-		</script>
+	<script>
+		function pedidos() {
+			$('#zona_central').load('./vista/muestraPedidos.php');
+		};
+		function usuarios() {
+			$('#zona_central').load('./vista/muestraUsuarios.php');
+		};
+		function precios(){
+			$('#zona_central').load('./vista/muestraPrecios.php');
+		}
+	</script>
 	<!-- ADMINISTRADOR -->	
-	<div class="panelControl">	
-		<strong>Panel de Administrador</strong>
-		<button type="button" class="btn-lg btn-info" onclick="pedidos()">Mostrar Pedidos</button>
-		<button type="button" class="btn-lg btn-info" onclick="usuarios()">Mostrar Usuarios</button>
-		<button type="button" class="btn-lg btn-info" onclick="precios()">Editar Precios</button>
-		<button type="button" class="btn-lg btn-info" onclick="">Modificar Pistas</button>
-		<button type="button" class="btn-lg btn-info" onclick="">Baja Usuario</button>
-	</div>	
+	
+	<legend>Panel de Administrador</legend>
+	<button type="button" class="btn-lg btn-info" onclick="pedidos()">Mostrar Pedidos</button>
+	<button type="button" class="btn-lg btn-info" onclick="usuarios()">Mostrar Usuarios</button>
+	<button type="button" class="btn-lg btn-info" onclick="precios()">Editar Precios</button>
+	<button type="button" class="btn-lg btn-info" onclick="">Modificar Pistas</button>
+	<button type="button" class="btn-lg btn-info" onclick="">Baja Usuario</button>
+	
 		
 	<?php	} ?>
 	
@@ -125,7 +120,7 @@
 	 </div>
 	
 
-</div>
+
 
 
 

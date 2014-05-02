@@ -34,7 +34,7 @@
 		</div>	
 		<div id="cuerpo">
 			<?php 
-				print_r($_SESSION); 
+				//print_r($_SESSION); 
 				if (isset($_SESSION['error'])){
 			?>		
 			<script>			
@@ -45,13 +45,13 @@
 				}			
 			?>
 			<div class="general">			
-				<div class="categorias">
+				<div class="fijo">
 					<?php include_once './vista/categorias.php'; ?>				
 				</div>
 				<div class="contenido" id="zona_central">
 					<?php include_once './vista/contenido.php'; ?>			
 				</div>
-				<div class="cesta">
+				<div class="fijo">
 					<?php include_once './vista/cesta.php'; ?>	
 				</div>
 			</div>

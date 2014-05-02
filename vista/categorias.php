@@ -14,7 +14,7 @@
 		$('#zona_central').load('./vista/casosUso.php');
 	}
 	function ubicacion() {
-		$('#zona_central').load('./ubicacion.php');
+		$('#zona_central').load('./vista/ubicacion.php');
 	}
 	function zona(id){
 		$('#zona_central').load('./vista/zona.php?opcion='+id);
@@ -24,7 +24,7 @@
 	}
 </script>
 
-<div class="fijo">
+
  <ul class="list-menu">
 	<li><a href="index.php">Home</a></li>
 	<li><a href="#">Categorias</a>
@@ -59,4 +59,4 @@
 	</li>
 
  </ul>
-</div>
+
