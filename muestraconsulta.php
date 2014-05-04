@@ -49,7 +49,7 @@
 				}			
 			?>
 			<div class="general">			
-				<div class="categorias">
+				<div class="fijo">
 					<?php include_once './vista/categorias.php'; ?>				
 				</div>
 				<div class="contenido" id="zona_central">
@@ -293,7 +293,7 @@
 					</fieldset>
 					<!-- fin de la consulta -->
 					</div>
-				<div class="cesta">
+				<div class="fijo">
 					<?php include_once './vista/cesta.php'; ?>	
 				</div>
 			</div>

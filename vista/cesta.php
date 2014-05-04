@@ -7,23 +7,39 @@
 		<?php 
 		if(($_SESSION['logueado'] && $_SESSION['tipo'] == 0) || ($_SESSION['logueado']) == 0){
 		?>
-		<form id="consulta" name="consulta" action="./muestraconsulta.php" method="post" accept-charset="utf-8">
+		
+		<script>
+			$(document).ready(function(){
+			  $("form").submit(function(){
+			  	
+			  	var e = document.getElementById('fecha');
+				var valfecha = e.value == "" ? "ninguno" : e.value ;
+				
+				e = document.getElementById('comboBoxZona');
+				var valzona = e.options[e.selectedIndex].value;
+				
+				console.log('./vista/consulta.php?fecha='+valfecha+'&zona='+valzona);
+				event.preventDefault();//sin esto no funciona ni su puta madre >.<!!!!!!!!!!!!!!!
+				
+			    $('#zona_central').load('./vista/consulta.php?fecha='+valfecha+'&zona='+valzona);
+			  });
+			});
+		</script>
+		
+		<form action="" method="get">
 			<fieldset>
 				<legend>Consulta</legend>
-				<input type="date" id="fecha" name="fecha" required=""><br>
+				<input type="date" id="fecha" name="fecha" required=""></br>
 				
-				<select name="zona">
-					<optgroup id="zona" label="Zona">
+				<select id="comboBoxZona">
 						<option value="norte">Norte</option>
-					    <option value="sur">Sur</option> 
-					    <option value="suroeste">Suroeste</option>
-					    <option value="seniora">Nª Señora</option>
-					    <option value="somosaguas">Somosaguas</option>
-					</optgroup>       
-				</select></br>
-				
-				<input type="submit" type="button" class="btn-xs btn-info" value="Consultar">
-				
+						<option value="sur">Sur</option> 
+						<option value="suroeste">Suroeste</option>
+						<option value="seniora">Nª Señora</option>
+						<option value="somosaguas">Somosaguas</option>
+				</select>
+				</br>
+				<button type="submit" class="btn-xs btn-info">Consultar</button>
 			</fieldset>
 		</form>
 	<?php 
