@@ -31,7 +31,7 @@ if ($usuarioLogueado){
 		$('#zona_central').load('./vista/registro.php');
 	};
 </script>
-	<form name="login" action="controlador/login.php" method="get" accept-charset="utf-8">
+	<form action="controlador/login.php" method="post" accept-charset="utf-8">
 			<input type="text" name="user" placeholder="Usuario" required="">
 			<input type="password" name="pass" placeholder="Contraseña" required="">
 			<input name="start_login" class="btn btn-xs btn-info" type="submit" value="Entrar"></br>

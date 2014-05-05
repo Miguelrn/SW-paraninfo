@@ -6,7 +6,6 @@
 		<a href="index.php">
 			<img id="deportes" src="./Images/titulo.png" alt="Pagina principal de deportes UCM"/>
 		</a>
-		
 	</div>
 	<div id="login">
 		<?php include_once './vista/usuario.php'; ?>
