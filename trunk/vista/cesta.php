@@ -9,24 +9,22 @@
 		?>
 		
 		<script>
-			$(document).ready(function(){
-			  $("form").submit(function(){
-			  	
-			  	var e = document.getElementById('fecha');
+			function muestraConsulta() {
+				var e = document.getElementById('fecha');
 				var valfecha = e.value == "" ? "ninguno" : e.value ;
 				
 				e = document.getElementById('comboBoxZona');
 				var valzona = e.options[e.selectedIndex].value;
-				
+			
 				console.log('./vista/consulta.php?fecha='+valfecha+'&zona='+valzona);
 				event.preventDefault();//sin esto no funciona ni su puta madre >.<!!!!!!!!!!!!!!!
 				
 			    $('#zona_central').load('./vista/consulta.php?fecha='+valfecha+'&zona='+valzona);
-			  });
-			});
+			
+			}
 		</script>
 		
-		<form action="" method="get">
+		<form onsubmit="muestraConsulta()" action="" method="get">
 			<fieldset>
 				<legend>Consulta</legend>
 				<input type="date" id="fecha" name="fecha" required=""></br>

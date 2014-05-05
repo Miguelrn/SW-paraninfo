@@ -8,6 +8,7 @@ body {
 div#login{
 	padding-top: 25px;
 	text-align: right;
+	float: right;
 }
 
 div#cuerpo{
@@ -24,7 +25,7 @@ body#reg{
 /**********************************************************************
  * Cabecera
  **********************************************************************/
-div.cabecera {	
+div.cabecera {
 	position: relative;
     float: left;
     background: url('../Images/fondo.png');  
@@ -177,27 +178,24 @@ footer#foot{
 .contenido {
 	position: relative;
     float: left; 
-	width: 1000px;
-	margin: 25px;
+	width: 63%;
+	margin: 20px;
 	padding-bottom: 35px;
 }
 
 .fijo{
 	position: fixed;
-	margin: 25px;
+	margin: 20px;
 	position:relative;
 	float:left; 
-	width:180px;
+	/*width:15%;*/
 }
 
 /**********************************************************************
  * Cesta
  **********************************************************************/
 
-.cesta {	
-	
-    
-	
+.cesta {
 	margin: 25px;
 }
 

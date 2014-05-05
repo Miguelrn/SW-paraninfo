@@ -2,9 +2,9 @@
 	session_start();
 	include_once '../controlador/opbasededatos.php';
     
-    $nombreUser = $_GET['user']; 
+    $nombreUser = $_POST['user']; 
 	//echo $nombreUser; 
-    $pass = $_GET['pass'];
+    $pass = $_POST['pass'];
 	
 	if(!isset($_SESSION['logueado'])) $_SESSION['logueado'] = false;
   
