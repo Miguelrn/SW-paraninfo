@@ -45,13 +45,13 @@
 				}			
 			?>
 			<div class="general">			
-				<div class="fijo">
+				<div class="fijo col-md-1">
 					<?php include_once './vista/categorias.php'; ?>				
 				</div>
 				<div class="contenido" id="zona_central">
 					<?php include_once './vista/contenido.php'; ?>			
 				</div>
-				<div class="fijo">
+				<div class="fijo col-md-1">
 					<?php include_once './vista/cesta.php'; ?>	
 				</div>
 			</div>
