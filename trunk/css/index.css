@@ -175,7 +175,7 @@ footer#foot{
  * Contenido
  **********************************************************************/
 
-.contenido {
+/contenido {
 	position: relative;
     float: left; 
 	width: 63%;
