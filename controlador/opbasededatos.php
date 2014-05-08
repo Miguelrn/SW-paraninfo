@@ -177,6 +177,17 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $r;
 	}
 	
+	public function updatePreciosPistas($id, $precio){
+		$consulta = "update precios set precio='$precio' where id = '$id'";
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+		$this->cerrar();
+		unset($consulta);
+		unset ($resultado);
+		return $r;
+	}
+	
 	public function cerrar () {
         @mysql_close($this->conexion);
     }

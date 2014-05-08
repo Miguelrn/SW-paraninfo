@@ -18,6 +18,10 @@ div.cuerpo{
 	margin-bottom: 50px;
 }
 
+div.zonaCentral {
+	margin-bottom: 40px;
+}
+
 body#reg{
 	margin-left: 5px;
 }
@@ -202,7 +206,6 @@ input.log{
  **********************************************************************/
 
 input.registro{
-	height: 20px;
 	width: 200px;
 }
 textarea#texto{
