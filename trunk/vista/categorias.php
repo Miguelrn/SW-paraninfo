@@ -27,7 +27,7 @@
 
  <ul class="list-menu">
 	<li><a href="index.php">Home</a></li>
-	<li><a href="#">Categorias</a>
+	<li><a href="#">Complejos Deportivos</a>
 		<ul id="categorias">
 			 <li><a href="#" onclick="zona(0)">Zona Norte</a></li>
 			 <li><a href="#" onclick="zona(1)">Zona Sur</a></li>

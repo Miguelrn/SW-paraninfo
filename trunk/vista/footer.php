@@ -11,8 +11,7 @@
 	</div>
 
 	<div class="text-right">
-		Ivan Mendez Jimenez y <a href="mailto:miguel9401@gmail.com">Miguel Rodriguez Navarro</a> - 2014<!-- pon tu mail aqui si quieres nunca me acuerdo de preguntarte <.< -->
+		<a href="ivmendez@ucm.es"> Ivan Mendez Jimenez</a> y <a href="mailto:miguel9401@gmail.com">Miguel Rodriguez Navarro</a> - 2014<!-- pon tu mail aqui si quieres nunca me acuerdo de preguntarte <.< -->
 	</div>
-	<!--<img id="contador" alt="contador de visitas" src="http://www.websmultimedia.com/contador-de-visitas.php?id=165399"/>-->
 
 </div>

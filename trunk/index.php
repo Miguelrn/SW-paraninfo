@@ -29,35 +29,23 @@
 		
 	</head>
 	<body>
-		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="navbar navbar-inverse navbar-fixed-top cab col-md-12">
 			<?php include_once './vista/cabecera.php'?>
-		</div>	
-		<div id="cuerpo">
-			<?php 
-				//print_r($_SESSION); 
-				if (isset($_SESSION['error'])){
-			?>		
-			<script>			
-				alert("<?php echo $_SESSION['error']?>");//informa del error mediante un popup		
-			</script>	
-			<?php
-					unset($_SESSION['error']);
-				}			
-			?>
-			<div class="general">			
-				<div class="fijo col-md-1">
-					<?php include_once './vista/categorias.php'; ?>				
-				</div>
-				<div class="contenido" id="zona_central">
-					<?php include_once './vista/contenido.php'; ?>			
-				</div>
-				<div class="fijo col-md-1">
-					<?php include_once './vista/cesta.php'; ?>	
-				</div>
+		</div>
+		<div class="cuerpo">
+			<div class="zonaIzq col-md-2 fijo">
+				<?php include_once './vista/categorias.php'; ?>	
 			</div>
-		</div>	
-		<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+			<div class="zonaCentral col-md-7" id="zona_central">
+				<?php include_once './vista/contenido.php'; ?>		
+			</div>
+			<div class="zonaDer col-md-2 fijo">
+				<?php include_once './vista/cesta.php'; ?>
+			</div>
+		</div>
+		<div class="navbar navbar-inverse navbar-fixed-bottom">
 			<?php include_once './vista/footer.php'; ?>
 		</div>
+		
 	</body>
-</html>
+	</html>

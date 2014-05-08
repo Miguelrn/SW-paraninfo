@@ -11,7 +11,7 @@ div#login{
 	float: right;
 }
 
-div#cuerpo{
+div.cuerpo{
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-top: 130px;/*margen del body hasta arriba*/
@@ -174,14 +174,6 @@ footer#foot{
 /**********************************************************************
  * Contenido
  **********************************************************************/
-
-/contenido {
-	position: relative;
-    float: left; 
-	width: 63%;
-	margin: 20px;
-	padding-bottom: 35px;
-}
 
 .fijo{
 	position: fixed;
