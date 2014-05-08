@@ -29,8 +29,19 @@
 		
 	</head>
 	<body>
+		<?php 
+                //print_r($_SESSION); 
+                if (isset($_SESSION['error'])){
+        ?>              
+        <script>                        
+                alert("<?php echo $_SESSION['error']?>");//informa del error mediante un popup          
+        </script>       
+        <?php
+                        unset($_SESSION['error']);
+                }                       
+        ?>
 		<div class="navbar navbar-inverse navbar-fixed-top cab col-md-12">
-			<?php include_once './vista/cabecera.php'?>
+			<?php include_once './vista/cabecera.php';?>
 		</div>
 		<div class="cuerpo">
 			<div class="zonaIzq col-md-2 fijo">
