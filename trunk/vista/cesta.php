@@ -17,7 +17,7 @@
 				var valzona = e.options[e.selectedIndex].value;
 			
 				console.log('./vista/consulta.php?fecha='+valfecha+'&zona='+valzona);
-				event.preventDefault();//sin esto no funciona ni su puta madre >.<!!!!!!!!!!!!!!!
+				event.preventDefault();
 				
 			    $('#zona_central').load('./vista/consulta.php?fecha='+valfecha+'&zona='+valzona);
 			

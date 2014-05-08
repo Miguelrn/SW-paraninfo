@@ -11,7 +11,7 @@
 		<p>El administrador del sistema web, es la persona encargada de desarrollar todas las funciones de configuraci&oacute;n de la p&aacute;gina web, 
 		as&iacute; como tambi&eacute;n actualizar la informaci&oacute;n all&iacute; expuesta.  </p>
 		
-		<div class="centrado">
+		<div class="text-center">
 			<a href="#admin">
 			<img class="monigote" href="#admin" src="./Images/actor.png" alt="Administrador"></a>
 			<p>Administrador</p>
