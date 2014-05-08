@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="text-right">
-		<a href="ivmendez@ucm.es"> Ivan Mendez Jimenez</a> y <a href="mailto:miguel9401@gmail.com">Miguel Rodriguez Navarro</a> - 2014<!-- pon tu mail aqui si quieres nunca me acuerdo de preguntarte <.< -->
+		<a href="mailto:ivmendez@ucm.es"> Ivan Mendez Jimenez</a> y <a href="mailto:miguel9401@gmail.com">Miguel Rodriguez Navarro</a> - 2014
 	</div>
 
 </div>
