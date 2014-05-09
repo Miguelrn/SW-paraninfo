@@ -19,7 +19,7 @@ div.cuerpo{
 }
 
 div.zonaCentral {
-	margin-bottom: 40px;
+	margin-bottom: 55px;
 }
 
 body#reg{
@@ -73,6 +73,7 @@ a#cssValido{
 	float: left;
 	position: relative;
 }
+
 div.email{
 	float: left;
 	position: relative;
@@ -88,12 +89,25 @@ footer#foot{
  * Menu
  **********************************************************************/
 
-.categorias {
+/*.categorias {
 	position:relative;
     float: left; 
 	width:182px;
 	margin:30px;
+}*/
+
+.sidebar-outer {
+    position: relative;
+    margin: 20px;
+	float: left;
 }
+
+
+.sidebar {
+    position: fixed;
+    margin: 30px;
+}
+
 
 .list-menu{
 	padding:0;
@@ -180,11 +194,10 @@ footer#foot{
  **********************************************************************/
 
 .fijo{
-	position: fixed;
+	/*position: fixed;*/
 	margin: 20px;
-	position:relative;
-	float:left; 
-	/*width:15%;*/
+	position: relative;
+	float: left;
 }
 
 /**********************************************************************

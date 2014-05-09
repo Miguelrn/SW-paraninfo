@@ -29,29 +29,35 @@
 		
 	</head>
 	<body>
-		<?php 
-                //print_r($_SESSION); 
-                if (isset($_SESSION['error'])){
-        ?>              
-        <script>                        
-                alert("<?php echo $_SESSION['error']?>");//informa del error mediante un popup          
-        </script>       
-        <?php
-                        unset($_SESSION['error']);
-                }                       
-        ?>
+		
 		<div class="navbar navbar-inverse navbar-fixed-top cab col-md-12">
 			<?php include_once './vista/cabecera.php';?>
 		</div>
 		<div class="cuerpo">
-			<div class="zonaIzq col-md-2 fijo">
-				<?php include_once './vista/categorias.php'; ?>	
+			<?php 
+	                //print_r($_SESSION); 
+	                if (isset($_SESSION['error'])){
+	        ?>              
+	        <script>                        
+	                alert("<?php echo $_SESSION['error']?>");//informa del error mediante un popup          
+	        </script>       
+	        <?php
+	                        unset($_SESSION['error']);
+	                }                       
+	        ?>
+			<div class="col-md-2 sidebar-outer">
+				<div class="sidebar">
+					<?php include_once './vista/categorias.php'; ?>	
+				</div>
 			</div>
 			<div class="zonaCentral col-md-7" id="zona_central">
 				<?php include_once './vista/contenido.php'; ?>		
 			</div>
-			<div class="zonaDer col-md-2 fijo">
-				<?php include_once './vista/cesta.php'; ?>
+			<div class="col-md-2 sidebar-outer">
+				<div class="sidebar">
+					<?php include_once './vista/cesta.php'; ?>
+				</div>
+				
 			</div>
 		</div>
 		<div class="navbar navbar-inverse navbar-fixed-bottom">

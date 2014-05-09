@@ -1,14 +1,20 @@
 <?php
 	session_start();
+	require_once '../controlador/opbasededatos.php';
 
-	$num = $_GET['num'];
+	if($_SERVER['REQUEST_METHOD'] == 'GET') {
+		$BDD = new Mysql();
+		$num = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_GET['num']))));
 	
-	array_splice($_SESSION['reserva'], $num, 1);
 	
-	if (count($_SESSION['reserva']) == 0){
-		unset($_SESSION['reserva']);
-	}
-	
+		array_splice($_SESSION['reserva'], $num, 1);
+		
+		if (count($_SESSION['reserva']) == 0){
+			unset($_SESSION['reserva']);
+		}
+	}	
 	header('Location: ../vista/reservas.php');
 	
 ?>
+
+
