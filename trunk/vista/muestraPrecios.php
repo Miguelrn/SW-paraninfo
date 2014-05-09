@@ -3,13 +3,13 @@
 	$BDD = new Mysql();
 	$resultado = $BDD->consultarPrecios();
 	session_start();
-	if (isset($_SESSION['error'])){
+	if (isset($_SESSION['modPrecio'])){
     ?>              
     <script>                        
-            alert("<?php echo $_SESSION['error']?>");//informa del error mediante un popup          
+            alert("<?php echo $_SESSION['modPrecio']?>");//informa del error mediante un popup          
     </script>       
     <?php
-         unset($_SESSION['error']);}                       
+         unset($_SESSION['modPrecio']);}                       
     ?>
 
 <div id="modprec">

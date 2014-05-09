@@ -84,14 +84,14 @@
 		}
 	</script>
 	<!-- ADMINISTRADOR -->	
-	
-	<legend>Panel de Administrador</legend>
-	<button type="button" class="btn-lg btn-info" onclick="pedidos()">Mostrar Pedidos</button>
-	<button type="button" class="btn-lg btn-info" onclick="usuarios()">Mostrar Usuarios</button>
-	<button type="button" class="btn-lg btn-info" onclick="precios()">Editar Precios</button>
-	<button type="button" class="btn-lg btn-info" onclick="">Modificar Pistas</button>
-	<button type="button" class="btn-lg btn-info" onclick="">Baja Usuario</button>
-	
+	<fieldset>
+		<legend>Panel de Administrador</legend>
+		<button type="button" class="btn-lg btn-info" onclick="pedidos()">Mostrar Pedidos</button>
+		<button type="button" class="btn-lg btn-info" onclick="usuarios()">Mostrar Usuarios</button>
+		<button type="button" class="btn-lg btn-info" onclick="precios()">Editar Precios</button>
+		<button type="button" class="btn-lg btn-info" onclick="">Modificar Pistas</button>
+		<button type="button" class="btn-lg btn-info" onclick="">Baja Usuario</button>
+	</fieldset>
 		
 	<?php	} ?>
 	

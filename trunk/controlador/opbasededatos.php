@@ -17,6 +17,19 @@ class Mysql { // estaba puesto en minúsculas todo
     private $conexion;  
     private $sql;*/
 	
+	
+	public function limpia_sql($texto){
+		$textoAux = "";
+		//echo $texto."0";
+		if (get_magic_quotes_gpc()){
+			$texto = stripslashes($texto);//quita /
+		}	
+		if (!is_numeric($texto)){
+			return mysql_real_escape_string($texto);
+		}
+		else	
+			return $texto;
+	}	
 
  
     public function conectar(){
@@ -35,7 +48,9 @@ class Mysql { // estaba puesto en minúsculas todo
 	}
 	
 	public function conseguirDatosUsuario($nombreUser, $pass){
+		//$consulta = sprintf("select * from usuario where nombreuser = '%s' AND password = '%s'",mysql_real_escape_string($nombreUser),mysql_real_escape_string($pass));
 		$consulta = "select * from usuario where nombreuser = '$nombreUser' AND password = '$pass'";
+		echo $consulta;
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
 		$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
@@ -181,11 +196,11 @@ class Mysql { // estaba puesto en minúsculas todo
 		$consulta = "update precios set precio='$precio' where id = '$id'";
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
-		$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+		//$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
 		$this->cerrar();
 		unset($consulta);
-		unset ($resultado);
-		return $r;
+		//unset ($resultado);
+		return mysqli_affected_rows($this->conexion) > 0;
 	}
 	
 	public function cerrar () {
