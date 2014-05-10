@@ -715,6 +715,11 @@ pre code {
   /*padding-left: 15px;*/
 
 }
+@media (min-width: 540px) {
+  .container {
+    width: 510px;
+  }
+}
 @media (min-width: 768px) {
   .container {
     width: 750px;

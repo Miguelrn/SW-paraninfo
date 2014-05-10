@@ -35,7 +35,7 @@
 		</div>
 		<div class="cuerpo">
 			<?php 
-	                //print_r($_SESSION); 
+	                print_r($_SESSION); 
 	                if (isset($_SESSION['error'])){
 	        ?>              
 	        <script>                        
