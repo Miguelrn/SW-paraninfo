@@ -11,16 +11,23 @@
 	    $reppass = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['repassw']))));
 		$provincia = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['provincia']))));
 		$fecha = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['fecha']))));
+		$fecha_reg = date("Y-m-d H:i:s",time());
+
 		
 		if (strcmp($pass, $reppass) == 0){
+			//echo $pass.$fecha_reg.$fecha;
+			$pass = hash("sha256",$pass.$fecha_reg.$fecha);
 			$BDD = new Mysql();	
-			$row = $BDD->insertarUser($user, $correo, $pass, $nombre, $apellidos, $fecha, $provincia);		
+			$row = $BDD->insertarUser($user, $correo, $pass, $nombre, $apellidos, $fecha, $provincia,$fecha_reg);		
 			if ($row){
+				$r = $BDD->consultaId($user);
+				$BDD->usuarioLogeado($r['id'],$row['correo']);
 				$_SESSION['nombre'] = $nombre;	
 				$_SESSION['user'] = $user;
 				$_SESSION['correo'] = $correo;	
 				$_SESSION['apellidos'] = $apellidos;		
 				$_SESSION['provincia'] = $provincia;
+				$_SESSION['fecha_registro'] = $fecha_reg;
 				$_SESSION['fecha'] = $fecha;	
 				$_SESSION['logueado'] = true;	
 				$_SESSION['tipo'] = 0;
@@ -29,20 +36,20 @@
 				if (isset($_SESSION['error'])){
 					unset($_SESSION['error']);
 				}
-				header('Location: ../index.php');
 				
 			} else {			
 				$_SESSION['error'] = "Hubo un problema al registrar. Intente nuevamente más tarde.";
 				$_SESSION['logueado'] = false;	
-				header('Location: ../index.php');
 				
 			}
 		} else {		
 			$_SESSION['error'] = "No fue posible realizar el registro. Las contraseñas no coinciden.";
 			$_SESSION['logueado'] = false;			
-			header('Location: ../index.php');
+			
 			
 		}
+		
 	}
+	header('Location: ../index.php');
 
 ?>

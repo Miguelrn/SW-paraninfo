@@ -7,6 +7,8 @@
 	    $newcont = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['newpass']))));
 		$repcont = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['reppass']))));
 		$user = $_SESSION['user'];
+		$fecha = $_SESSION['fecha'];
+		$fecha_reg = $_SESSION['fecha_registro'];
 		if(isset($_SESSION['id'])){
 			$id = $_SESSION['id'];
 		}	
@@ -16,7 +18,7 @@
 			$id = $row['id'];
 			$_SESSION['id'] = $id;
 		}
-	
+		$cont = hash("sha256",$cont.$fecha_reg.$fecha);
 		
 		$BDD = new Mysql();
 		$row = $BDD->conseguirDatosUsuario($user,$cont);
@@ -24,6 +26,7 @@
 		if($row) {
 				
 			if(strcmp($newcont, $repcont) == 0) {
+				$newcont = hash("sha256",$newcont.$fecha_reg.$fecha);
 				$BDD->updatePassUsuario($id, $newcont);
 			}
 			else $_SESSION['error'] = "Las contraseñas no coinciden";

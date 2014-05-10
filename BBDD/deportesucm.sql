@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-04-2014 a las 16:36:16
+-- Tiempo de generación: 10-05-2014 a las 11:19:59
 -- Versión del servidor: 5.5.32
 -- Versión de PHP: 5.4.19
 
@@ -16,6 +16,12 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
+--
+-- Base de datos: `deportesucm`
+--
+CREATE DATABASE IF NOT EXISTS `deportesucm` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `deportesucm`;
+
 -- --------------------------------------------------------
 
 --
@@ -27,14 +33,62 @@ CREATE TABLE IF NOT EXISTS `encuesta` (
   `id_user` int(11) NOT NULL,
   `deporte` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Volcado de datos para la tabla `encuesta`
 --
 
 INSERT INTO `encuesta` (`id`, `id_user`, `deporte`) VALUES
-(5, 1, 'Futbol');
+(5, 1, 'Futbol'),
+(6, 0, 'Futbol'),
+(8, 8, 'Tenis'),
+(9, 3, 'Tenis'),
+(10, 9, 'Balonmano'),
+(11, 9, 'Balonmano'),
+(12, 10, 'Rugby');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `logeos`
+--
+
+CREATE TABLE IF NOT EXISTS `logeos` (
+  `id_user` int(11) NOT NULL,
+  `correo` varchar(40) NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `logeos`
+--
+
+INSERT INTO `logeos` (`id_user`, `correo`, `fecha`) VALUES
+(10, 'k@k.com', '2014-05-09 20:57:36'),
+(1, 'chicote@gmail.com', '2014-05-09 21:08:11'),
+(1, 'chicote@gmail.com', '2014-05-09 21:21:27'),
+(1, 'chicote@gmail.com', '2014-05-09 21:23:35'),
+(1, 'chicote@gmail.com', '2014-05-09 21:24:15'),
+(1, 'chicote@gmail.com', '2014-05-09 21:33:19'),
+(1, 'chicote@gmail.com', '2014-05-09 21:33:56'),
+(1, 'chicote@gmail.com', '2014-05-10 08:08:48'),
+(6, 'admin@admin.com', '2014-05-10 08:10:10'),
+(9, 'm@m.com', '2014-05-10 08:11:06'),
+(10, 'k@k.com', '2014-05-10 08:11:49'),
+(1, 'chicote@gmail.com', '2014-05-10 08:30:14'),
+(1, 'chicote@gmail.com', '2014-05-10 08:36:02'),
+(1, 'chicote@gmail.com', '2014-05-10 08:36:16'),
+(10, 'k@k.com', '2014-05-10 08:38:32'),
+(6, 'admin@admin.com', '2014-05-10 08:40:35'),
+(6, 'admin@admin.com', '2014-05-10 08:49:25'),
+(6, 'admin@admin.com', '2014-05-10 08:51:21'),
+(6, 'admin@admin.com', '2014-05-10 08:53:32'),
+(11, '', '2014-05-10 08:58:15'),
+(12, '', '2014-05-10 09:09:42'),
+(12, '1@1.es', '2014-05-10 09:12:37'),
+(12, '1@1.es', '2014-05-10 09:17:41'),
+(12, '1@1.es', '2014-05-10 09:18:17');
 
 -- --------------------------------------------------------
 
@@ -51,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `tipo_reserva` varchar(30) NOT NULL,
   `zona` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Volcado de datos para la tabla `pedidos`
@@ -64,7 +118,13 @@ INSERT INTO `pedidos` (`id`, `id_user`, `nombre_pista`, `fecha`, `hora`, `tipo_r
 (7, 1, 'Futbol', '2014-04-30', 9, 'partido', 'norte'),
 (10, 1, 'Atletismo', '2014-04-30', 9, '1 hora', 'sur'),
 (11, 1, 'Piscina', '2014-04-30', 9, '1 calle', 'seniora'),
-(12, 1, 'Rugby', '2014-04-30', 9, 'partido', 'suroeste');
+(12, 1, 'Rugby', '2014-04-30', 9, 'partido', 'suroeste'),
+(14, 1, 'Baloncesto', '2014-05-31', 21, '1 hora', 'norte'),
+(15, 1, 'Baloncesto', '2014-05-31', 10, '1 hora', 'norte'),
+(16, 1, 'Baloncesto', '2014-05-31', 11, '1 hora', 'norte'),
+(17, 1, 'Futbol', '2014-05-31', 20, 'partido', 'norte'),
+(18, 1, 'Rugby', '2014-05-31', 9, 'partido', 'sur'),
+(19, 1, 'Baloncesto', '2014-05-29', 19, '1 hora', 'norte');
 
 -- --------------------------------------------------------
 
@@ -128,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `precios` (
 --
 
 INSERT INTO `precios` (`id`, `nombre`, `precio`, `tipo`) VALUES
-(1, 'Piscina-seniora', '4.00', '1 banio'),
+(1, 'Piscina-seniora', '7.00', '1 banio'),
 (2, 'Piscina-seniora', '25.00', '10 banios'),
 (3, 'Piscina-seniora', '75.00', '1 calle'),
 (4, 'Tenis', '3.00', 'antes 12'),
@@ -167,24 +227,28 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nombre` varchar(45) NOT NULL,
   `apellidos` varchar(45) NOT NULL,
   `nombreuser` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(65) NOT NULL,
   `correo` varchar(45) NOT NULL,
   `provincia` varchar(45) NOT NULL,
   `fecha` date NOT NULL,
+  `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `tipo` int(11) NOT NULL,
   `encuesta` tinyint(1) NOT NULL DEFAULT '0',
   `imagen` blob NOT NULL,
   PRIMARY KEY (`id`,`nombreuser`,`correo`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `nombre`, `apellidos`, `nombreuser`, `password`, `correo`, `provincia`, `fecha`, `tipo`, `encuesta`, `imagen`) VALUES
-(1, 'Alberto', 'Chicote', 'Chicote', '1234', 'chicote@gmail.com', 'Madrid', '1997-01-06', 0, 1, ''),
-(3, 'carla', 'aguero', 'asdfg', '1234', 'carlos@carlos.com', 'leon', '2015-01-01', 0, 0, ''),
-(6, 'administrador', 'ruiz', 'admin', '1049', 'admin@admin.com', 'Madrid', '1985-10-06', 1, 1, '');
+INSERT INTO `usuario` (`id`, `nombre`, `apellidos`, `nombreuser`, `password`, `correo`, `provincia`, `fecha`, `fecha_registro`, `tipo`, `encuesta`, `imagen`) VALUES
+(1, 'Alberto', 'Chicote', 'Chicote', 'f73aeb704e4b2ddd82c81aa52c4fb316b92ce76246b8f4c1e70c9773851a2701', 'chicote@gmail.com', 'Madrid', '1997-01-06', '2011-09-13 07:53:14', 0, 1, ''),
+(6, 'administrador', 'ruiz', 'admin', '3384a5f1b1a18f4ffc70c13fd673d861e7a693d11d74888cab4022f2e87df8ff', 'admin@admin.com', 'Madrid', '1985-10-06', '2009-07-14 13:36:22', 1, 1, ''),
+(9, 'carlos', 'martin', 'carlitodoso', 'b87341ff0c4091ae9f295366f77f01f9d6097d8ba788b83ea19ff5a73d8414c4', 'm@m.com', 'madrid', '1964-08-24', '2014-05-09 20:47:20', 0, 1, ''),
+(10, 'salvador', 'moreno', 'trigor', '955a5d51359369838a437d5ab3923b2ae5a534cc16748ec1c68d9ef7a8670f02', 'k@k.com', 'madrid', '1986-12-25', '2014-05-09 20:56:26', 0, 1, ''),
+(11, 'juan', 'pavon', 'pavito', 'd5814fa8a602340423bbba672f21575fd852a52596b8c69dc635a60884113877', 'pavon@p.com', 'leonidas', '1969-10-21', '2014-05-10 08:58:13', 0, 0, ''),
+(12, '111', '222', '1212', 'd01fa956b1887c9a5eb429b071a9a239544d42c27ed606f526eccb75e01e7600', '1@1.es', 'madrid', '1988-02-12', '2014-05-10 09:09:39', 0, 0, '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

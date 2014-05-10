@@ -95,43 +95,7 @@
 		
 	<?php	} ?>
 	
-	<!-- ENCUESTA -->
-	<div>
-	</br>
-	 	<?php 
-	 		if((isset($_SESSION['logueado']) && $_SESSION['logueado'] == 1) && ($_SESSION['encuesta'] == 1 && $_SESSION['tipo'] == 0)){//ya ha hecho la encuenta
-	 			echo "<legend>Deportes preferidos</legend>";
-		 		$encuesta = $BDD->consultarEncuesta();
-				$totalEncuestas = 0;
-				while($rowEncuesta = mysqli_fetch_array($encuesta, MYSQLI_ASSOC)){
-					$totalEncuestas = $totalEncuestas + $rowEncuesta['cantidad'];
-				}
-				$encuesta = $BDD->consultarEncuesta();
-				while($rowEncuesta = mysqli_fetch_array($encuesta, MYSQLI_ASSOC)){
-					//$totalEncuestas = $totalEncuestas + $rowEncuesta['cantidad'];
-					echo "	".$rowEncuesta['deporte']." ";
-					$num=($rowEncuesta['cantidad']/$totalEncuestas)*100;
-					echo number_format($num,2,".",","); 
-					echo " %</br>"; 
-				}
-			
-	 		?>
-	 		
-	 	<?php }else if(isset($_SESSION['logueado']) && $_SESSION['logueado'] && $_SESSION['tipo'] == 0){//no ha hecho la encuesta ?>
-	 		<form name="encuesta" action="./controlador/encuesta.php" method="get" accept-charset="utf-8">
-	 			<fieldset>
-					<legend>Encuesta</legend>
-					<strong>¿Deporte preferido?</strong>
-					<input type="radio" name="opcion" value="Futbol" required="">Futbol</br>
-					<input type="radio" name="opcion" value="Baloncesto" required="">Baloncesto</br>
-					<input type="radio" name="opcion" value="Balonmano" required="">Balonamno</br>
-					<input type="radio" name="opcion" value="Tenis" required="">Tenis</br>
-					<input type="radio" name="opcion" value="Rugby" required="">Rugby</br>
-					<input type="submit" type="button" class="btn-xs btn-info" value="Enviar">
-				</fieldset>	
-	 		</form>
-	 	<?php } ?>		
-	 </div>
+	
 	
 
 

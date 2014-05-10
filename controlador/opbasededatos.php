@@ -37,9 +37,9 @@ class Mysql { // estaba puesto en minúsculas todo
         mysqli_select_db($this->conexion, $this->bd);
     }
 		
-	public function insertarUser($user, $correo, $pass, $nombre, $apellidos, $fecha, $provincia){
-		$consulta="insert into usuario (nombre, apellidos, nombreuser, password, correo, provincia, fecha, tipo)
-		values('$nombre', '$apellidos', '$user', '$pass', '$correo', '$provincia', '$fecha', '0')";
+	public function insertarUser($user, $correo, $pass, $nombre, $apellidos, $fecha, $provincia, $fecha_reg){
+		$consulta="insert into usuario (nombre, apellidos, nombreuser, password, correo, provincia, fecha, fecha_registro,tipo)
+		values('$nombre', '$apellidos', '$user', '$pass', '$correo', '$provincia', '$fecha', '$fecha_reg','0')";
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
 		$this->cerrar();
@@ -47,10 +47,19 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $resultado;
 	}
 	
-	public function conseguirDatosUsuario($nombreUser, $pass){
-		//$consulta = sprintf("select * from usuario where nombreuser = '%s' AND password = '%s'",mysql_real_escape_string($nombreUser),mysql_real_escape_string($pass));
-		$consulta = "select * from usuario where nombreuser = '$nombreUser' AND password = '$pass'";
-		echo $consulta;
+	public function conseguirDatosUsuario($nombreUser, $pass){//hash("sha256",$pass.($row['fecha_registro'] - $row['fecha']));
+		$consulta = "select * from usuario where nombreuser = '$nombreUser' AND password= '$pass'";
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+		$this->cerrar();
+		unset($consulta);
+		unset($resultado);
+		return $r;
+	}
+	
+	public function consultaUser($nombreUser){
+		$consulta = "select * from usuario where nombreuser = '$nombreUser'";
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
 		$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
@@ -199,8 +208,16 @@ class Mysql { // estaba puesto en minúsculas todo
 		//$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
 		$this->cerrar();
 		unset($consulta);
-		//unset ($resultado);
 		return mysqli_affected_rows($this->conexion) > 0;
+	}
+	
+	public function usuarioLogeado($id, $correo){
+		$consulta = "insert into logeos (id_user, correo) values ('$id', '$correo')";
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;
 	}
 	
 	public function cerrar () {
