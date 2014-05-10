@@ -29,7 +29,7 @@
 		
 	<div>
 		<input type="submit" type="button" class="btn-xs btn-info" value="Enviar Formulario">
-		<input type="submit" type="button" class="btn-xs btn-info" value="Borrar Formulario">
+		<input type="reset" type="button" class="btn-xs btn-info" value="Borrar Formulario">
 	</div>
 
 	
