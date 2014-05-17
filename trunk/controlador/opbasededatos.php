@@ -19,16 +19,17 @@ class Mysql { // estaba puesto en minúsculas todo
 	
 	
 	public function limpia_sql($texto){
-		$textoAux = "";
-		//echo $texto."0";
+
+		$link = mysqli_connect($this->host,$this->user,$this->clave, $this->bd);
+		
 		if (get_magic_quotes_gpc()){
 			$texto = stripslashes($texto);//quita /
 		}	
 		if (!is_numeric($texto)){
-			return mysql_real_escape_string($texto);
+			$texto = mysqli_real_escape_string($link, $texto);
 		}
-		else	
-			return $texto;
+			
+		return $texto;
 	}	
 
  
@@ -38,7 +39,7 @@ class Mysql { // estaba puesto en minúsculas todo
     }
 		
 	public function insertarUser($user, $correo, $pass, $nombre, $apellidos, $fecha, $provincia, $fecha_reg){
-		$consulta="insert into usuario (nombre, apellidos, nombreuser, password, correo, provincia, fecha, fecha_registro,tipo)
+		$consulta="insert into usuario (nombre, apellidos, nombreuser, password, correo, provincia, fecha, fecha_registro, tipo)
 		values('$nombre', '$apellidos', '$user', '$pass', '$correo', '$provincia', '$fecha', '$fecha_reg','0')";
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
@@ -117,9 +118,9 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $r;
 	}
 	
-	public function insertarPedido($id_user, $nombre_pista, $fecha, $hora, $tipo_reserva, $zona){
-		$consulta = "insert into pedidos (id_user, nombre_pista, fecha, hora, tipo_reserva, zona)
-		values('$id_user', '$nombre_pista', '$fecha', '$hora', '$tipo_reserva', '$zona')";
+	public function insertarPedido($id_user, $txn_id, $email, $nombre_pista, $precio, $fecha, $hora, $tipo_reserva, $zona){
+		$consulta = "insert into pedidos (id_user, txn_id, email, nombre_pista, precio, fecha, hora, tipo_reserva, zona)
+		values('$id_user', '$txn_id', '$email', '$nombre_pista', '$precio', '$fecha', '$hora', '$tipo_reserva', '$zona')";
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
 		$this->cerrar();
@@ -219,6 +220,17 @@ class Mysql { // estaba puesto en minúsculas todo
 		unset($consulta);
 		return $resultado;
 	}
+	
+	public function buscarPedido($idPedido){
+		$consulta = "SELECT * FROM pedidos WHERE txn_id = '$idPedido'";
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return mysqli_affected_rows($this->conexion) == 1;
+	}
+	
+	
 	
 	public function cerrar () {
         @mysql_close($this->conexion);
