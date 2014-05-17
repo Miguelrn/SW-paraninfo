@@ -12,6 +12,7 @@
 		<link href="./css/bootstrap.css" rel="stylesheet" type="text/css"/>
 		<link href="./css/index.css" rel="stylesheet" type="text/css"/>
 		<script src="./jquery/jquery-2.1.0.min.js" type="text/javascript"></script>
+		<script src="./jquery/paypal-button.min.js" type="text/javascript"></script>
 		
 		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js' type='text/javascript'>
 		</script>
