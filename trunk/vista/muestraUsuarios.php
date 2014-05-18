@@ -2,8 +2,25 @@
 	include_once '../controlador/opbasededatos.php';
 	$BDD = new Mysql();
 	$resultado = $BDD->consultarUsuarios();
-?>
-<div>
+?>	
+
+<div id="listauser">
+	
+	<script>
+		function borraUsuario(id){	
+			
+			var select = confirm("¿Desea realmente borrar este usuario?"); 
+
+			if(select) {
+				alert("USUARIO ELIMINADO");	
+				$("#listauser").load("./controlador/borraUser.php?id="+id);
+			} 
+			else {
+				alert("USUARIO NO ELIMINADO");
+			} 	
+		};
+	</script>
+	
 	<table class="table">
 		<thead>
 			<tr>
@@ -14,6 +31,7 @@
 			    <th>Correo</th>
 			    <th>Provincia</th>
 			    <th>Fecha</th>
+			    <th>Eliminar</th>
 			</tr>
 	  	</thead>
 	  	<tbody>
@@ -31,6 +49,7 @@
 				<th><?php print $row['correo'];?></th>
 				<th><?php print $row['provincia'];?></th>
 				<th><?php print $row['fecha'];?></th>
+				<th><button name="delete" type="button" class="btn-group-xs btn-info" onclick="borraUsuario(<?php echo $row['id'] ?>)">X</button></th>
 			</tr>
 
 	<?php }}//cierra el while ?>

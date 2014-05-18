@@ -230,6 +230,15 @@ class Mysql { // estaba puesto en minúsculas todo
 		return mysqli_affected_rows($this->conexion) == 1;
 	}
 	
+	public function deleteUser($id) {
+		$consulta = "delete from usuario where id='$id'";
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;
+	}
+	
 	
 	
 	public function cerrar () {

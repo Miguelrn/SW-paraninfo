@@ -36,31 +36,21 @@
 	
 	if ($verified) {
 	
-	    $errmsg = '';   // stores errors from fraud checks
+	    $errmsg = '';
 	    
-	    // 1. Make sure the payment status is "Completed" 
 	    if ($_POST['payment_status'] != 'Completed') { 
-	        // simply ignore any IPN that is not completed
 	        exit(0); 
 	    }
 	
-	    // 2. Make sure seller email matches your primary account email.
-	    /*if ($_POST['receiver_email'] != 'ppaypal@paraninfo.tk') {
+	    if ($_POST['receiver_email'] != 'ppaypal@paraninfo.tk') {
 	        $errmsg .= "'receiver_email' does not match: ";
 	        $errmsg .= $_POST['receiver_email']."\n";
-	    }*/
+	    }
 	    
-	    // 3. Make sure the amount(s) paid match
-	    /*if ($_POST['mc_gross'] != '9.99') {
-	        $errmsg .= "'mc_gross' does not match: ";
-	        $errmsg .= $_POST['mc_gross']."\n";
-	    }*/
-	    
-	    // 4. Make sure the currency code matches
-	    /*if ($_POST['mc_currency'] != 'USD') {
+	    if ($_POST['mc_currency'] != 'EUR') {
 	        $errmsg .= "'mc_currency' does not match: ";
 	        $errmsg .= $_POST['mc_currency']."\n";
-	    }*/
+	    }
 	
 	    $txn_id = $BDD->limpia_sql($_POST['txn_id']);//comprobamos que no este repetido la id
 		$r = $BDD->buscarPedido($txn_id);//busca si el pedido existe, ya estaria procesado
@@ -80,22 +70,18 @@
 	    	
 		    $payer_email = $BDD->limpia_sql($_POST['payer_email']);
 		    $mc_gross = $BDD->limpia_sql($_POST['mc_gross']);
-			
-			$reservas = $_SESSION['reserva'];
 			$txn_id = $BDD->limpia_sql($_POST['txn_id']);
-			$correo = $_SESSION['correo'];
-			mail('ppaypal@paraninfo.tk', 'variable 2', $payer_email."\n".$mc_gross."\n".$txn_id."\n".$correo);
-			//mail('ppaypal@paraninfo.tk', 'variable 3', $reservas[0][0]."\n".$reservas[0][1]."\n".$reservas[0][2]."\n".$reservas[0][4]."\n".$reservas[0][5]."\n".$reservas[0][6]."\n".$reservas[0][3]."\n");
+			
+			
 			for ($i=0, $len=count($reservas); $i<$len; $i++) {
 					
 				$BDD->insertarPedido($id_user, $txt_id, $payer_email, $reservas[$i][1], $reservas[$i][5], $reservas[$i][2], $reservas[$i][3], $reservas[$i][4], $reservas[$i][6]);
 			}
 			
-			unset($_SESSION['reserva']);
+			unset($_SESSION['reserva']);//no los borra OJO
 			
 			//mandar un mail de confirmacion del pedido? ... futura ampliacion
 			
-			mail('ppaypal@paraninfo.tk', 'final transaccion', 'ha llegado al final !');
 	    }
 	    
 	} else {
