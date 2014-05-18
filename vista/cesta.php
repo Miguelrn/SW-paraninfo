@@ -26,7 +26,7 @@
 		
 		<form onsubmit="muestraConsulta()" action="" method="get">
 			<fieldset>
-				<legend>Consulta</legend>
+				<legend>Reservas</legend>
 				<input type="date" id="fecha" name="fecha" required=""></br>
 				
 				<select id="comboBoxZona">
@@ -94,6 +94,19 @@
 	</fieldset>
 		
 	<?php	} ?>
+	
+	
+	
+
+
+
+
+
+
+
+
+	
+
 	
 	
 	

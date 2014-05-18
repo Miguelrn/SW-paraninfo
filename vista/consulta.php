@@ -26,6 +26,12 @@
 					<?php
 				}
 				$BDD = new Mysql();
+				
+				echo "<h4><strong>Funcionamiento (Necesita estar registrado): </strong></h4>";
+				echo "<h4> - Pinche, a continuación, sobre la hora a la que quiere reservar una pista concreta. </h4>";
+				echo "<h4> - Las horas marcadas en rojo ya estan reservadas. </h4>";
+				echo "<h4> - Puede ver sus reservas actuales en el apartado 'Reserva actual' del menu de la izquierda.</h4>";
+				
 				if(strcmp($zona,"norte") == 0){
 					$pistas = $BDD->pistasDisponibles("norte");
 					$consulta = $BDD->consultaPedido($fecha, "norte");//consulta las reservas realizadas en esta fecha

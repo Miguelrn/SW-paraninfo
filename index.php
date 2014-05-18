@@ -47,17 +47,17 @@
 	                }                       
 	        ?>
 			<div class="col-md-2 sidebar-outer">
-				<div class="sidebar">
+				<!--<div class="sidebar">-->
 					<?php include_once './vista/categorias.php'; ?>	
-				</div>
+				<!--</div>-->
 			</div>
 			<div class="zonaCentral col-md-7" id="zona_central">
 				<?php include_once './vista/contenido.php'; ?>		
 			</div>
 			<div class="col-md-2 sidebar-outer">
-				<div class="sidebar">
+				<!--<div class="sidebar">-->
 					<?php include_once './vista/cesta.php'; ?>
-				</div>
+				<!--</div>-->
 				
 			</div>
 		</div>
