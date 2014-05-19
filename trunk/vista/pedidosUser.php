@@ -16,7 +16,7 @@
 ?>
 <div>
 	<fieldset id="consulta">
-		<legend>Mi historial de pedidos</legend>
+		<legend class="text-center">Mi historial de pedidos</legend>
 		<div>
 			<table class="table">
 				<thead>

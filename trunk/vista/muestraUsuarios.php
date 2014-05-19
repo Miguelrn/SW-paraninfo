@@ -9,7 +9,7 @@
 	<script>
 		function borraUsuario(id){	
 			
-			var select = confirm("¿Desea realmente borrar este usuario?"); 
+			var select = confirm("Â¿Desea realmente borrar este usuario?"); 
 
 			if(select) {
 				alert("USUARIO ELIMINADO");	

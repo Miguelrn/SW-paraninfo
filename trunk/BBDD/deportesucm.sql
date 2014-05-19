@@ -1,14 +1,13 @@
-
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 17-05-2014 a las 10:36:47
--- Versión del servidor: 5.1.61
--- Versión de PHP: 5.2.17
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 19-05-2014 a las 16:20:49
+-- Versión del servidor: 5.5.32
+-- Versión de PHP: 5.4.19
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,9 +16,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
---
--- Base de datos: `u528687211_depor`
---
 
 -- --------------------------------------------------------
 
@@ -115,7 +111,14 @@ INSERT INTO `logeos` (`id_user`, `correo`, `fecha`) VALUES
 (1, 'chicote@gmail.com', '2014-05-13 07:12:21'),
 (1, 'chicote@gmail.com', '2014-05-14 09:46:30'),
 (6, 'admin@admin.com', '2014-05-15 21:47:50'),
-(1, 'chicote@gmail.com', '2014-05-15 22:54:23');
+(1, 'chicote@gmail.com', '2014-05-15 22:54:23'),
+(26, '', '2014-05-17 20:47:03'),
+(26, 'sa@sa.com', '2014-05-17 20:47:16'),
+(26, 'sa@sa.com', '2014-05-18 11:52:32'),
+(26, 'sa@sa.com', '2014-05-18 12:48:46'),
+(26, 'sa@sa.com', '2014-05-18 17:27:09'),
+(6, 'admin@admin.com', '2014-05-19 14:18:55'),
+(1, 'chicote@gmail.com', '2014-05-19 14:19:54');
 
 -- --------------------------------------------------------
 
@@ -266,15 +269,15 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `encuesta` tinyint(1) NOT NULL DEFAULT '0',
   `imagen` blob NOT NULL,
   PRIMARY KEY (`id`,`nombreuser`,`correo`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `apellidos`, `nombreuser`, `password`, `correo`, `provincia`, `fecha`, `fecha_registro`, `tipo`, `encuesta`, `imagen`) VALUES
-(1, 'Alberto', 'Chicote', 'Chicote', 'a41cc38431cc5bb985778c3f1a141728d87f114199ecc8fda5c1191f2a9b8558', 'chicote@gmail.com', 'Madrid', '1997-01-06', '2011-09-13 07:53:14', 0, 1, ''),
-(6, 'administrador', 'ruiz', 'admin', '526791f0c276c57a2ec0cd7ce633c10da08890a7e6f1a42895801fd8940432af', 'admin@admin.com', 'Madrid', '1985-10-06', '2009-07-14 13:36:22', 1, 1, ''),
+(1, 'Alberto', 'Chicote', 'Chicote', 'f73aeb704e4b2ddd82c81aa52c4fb316b92ce76246b8f4c1e70c9773851a2701', 'chicote@gmail.com', 'Madrid', '1997-01-06', '2011-09-13 07:53:14', 0, 1, ''),
+(6, 'administrador', 'ruiz', 'admin', '3384a5f1b1a18f4ffc70c13fd673d861e7a693d11d74888cab4022f2e87df8ff', 'admin@admin.com', 'Madrid', '1985-10-06', '2009-07-14 13:36:22', 1, 1, ''),
 (9, 'carlos', 'martin', 'carlitodoso', 'df3fdca9854a472f6889118bd1458f2a4394355f55c9395d8b45e51ffd42daa8', 'm@m.com', 'madrid', '1964-08-24', '2014-05-09 20:47:20', 0, 1, ''),
 (10, 'salvador', 'moreno', 'trigor', '955a5d51359369838a437d5ab3923b2ae5a534cc16748ec1c68d9ef7a8670f02', 'k@k.com', 'madrid', '1986-12-25', '2014-05-09 20:56:26', 0, 1, ''),
 (11, 'juan', 'pavon', 'pavito', '38f315d49c7065909c8bd8aa9fc4cbc95d9adf17ed15cff7c285e9c308d625b2', 'pavon@p.com', 'leonidas', '1969-10-21', '2014-05-10 08:58:13', 0, 0, ''),
