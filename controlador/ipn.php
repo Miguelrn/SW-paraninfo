@@ -73,7 +73,11 @@
 			$txn_id = $BDD->limpia_sql($_POST['txn_id']);
 			
 			
-			for ($i=0, $len=count($reservas); $i<$len; $i++) {
+			for ($i=1, $len=count($reservas); $i<$len; $i++) {//hasta donde debe contar ¿?
+				$fecha = $BDD->limpia_sql($_POST['os0_']);
+				$hora = $BDD->limpia_sql($_POST['os1_']);
+				$tipo = $BDD->limpia_sql($_POST['os2_']);
+				$zona = $BDD->limpia_sql($_POST['os3_']);
 					
 				$BDD->insertarPedido($id_user, $txt_id, $payer_email, $reservas[$i][1], $reservas[$i][5], $reservas[$i][2], $reservas[$i][3], $reservas[$i][4], $reservas[$i][6]);
 			}

@@ -714,27 +714,30 @@ pre code {
   /*padding-right: 15px;*/
   /*padding-left: 15px;*/
 
- 
-
 }
 @media (min-width: 540px) {
   .container {
-    width: 95%;
+    width: 510px;
   }
 }
 @media (min-width: 768px) {
   .container {
-    width: 95%;
+    width: 750px;
   }
 }
 @media (min-width: 992px) {
   .container {
-    width: 95%;
+    width: 970px;
   }
 }
 @media (min-width: 1200px) {
   .container {
-    width: 95%;
+    width: 1170px;
+  }
+}
+@media (min-width: 1600px) {
+  .container {
+    width: 1570px;
   }
 }
 .container-fluid {

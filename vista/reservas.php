@@ -4,7 +4,7 @@
 	}
 ?>
 <div id="listaCompra">
-	<legend class="text-center">Mi cesta</legend>
+	<legend class="text-center">Mi reserva actual</legend>
 	<script>
 		function borraReserva(num){		
 			$("#listaCompra").load("./controlador/borraReserva.php?num="+num);

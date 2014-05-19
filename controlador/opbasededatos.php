@@ -39,7 +39,7 @@ class Mysql { // estaba puesto en minúsculas todo
     }
 		
 	public function insertarUser($user, $correo, $pass, $nombre, $apellidos, $fecha, $provincia, $fecha_reg){
-		$consulta="insert into usuario (nombre, apellidos, nombreuser, password, correo, provincia, fecha, fecha_registro, tipo)
+		$consulta="insert into usuario (nombre, apellidos, nombreuser, password, correo, provincia, fecha, fecha_registro,tipo)
 		values('$nombre', '$apellidos', '$user', '$pass', '$correo', '$provincia', '$fecha', '$fecha_reg','0')";
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
@@ -118,7 +118,7 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $r;
 	}
 	
-	public function insertarPedido($id_user, $txn_id, $email, $nombre_pista, $precio, $fecha, $hora, $tipo_reserva, $zona){
+public function insertarPedido($id_user, $txn_id, $email, $nombre_pista, $precio, $fecha, $hora, $tipo_reserva, $zona){
 		$consulta = "insert into pedidos (id_user, txn_id, email, nombre_pista, precio, fecha, hora, tipo_reserva, zona)
 		values('$id_user', '$txn_id', '$email', '$nombre_pista', '$precio', '$fecha', '$hora', '$tipo_reserva', '$zona')";
 		$this->conectar();
@@ -229,7 +229,6 @@ class Mysql { // estaba puesto en minúsculas todo
 		unset($consulta);
 		return mysqli_affected_rows($this->conexion) == 1;
 	}
-	
 	public function deleteUser($id) {
 		$consulta = "delete from usuario where id='$id'";
 		$this->conectar();
@@ -237,9 +236,7 @@ class Mysql { // estaba puesto en minúsculas todo
 		$this->cerrar();
 		unset($consulta);
 		return $resultado;
-	}
-	
-	
+	}	
 	
 	public function cerrar () {
         @mysql_close($this->conexion);
