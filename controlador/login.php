@@ -15,7 +15,7 @@
 		
 		//echo $r['fecha_registro']."    ";
 		//echo $r['fecha'];
-		echo $pass;
+		//echo $pass;
 		
 
 		$row = $BDD->conseguirDatosUsuario($nombreUser, $pass);
@@ -38,6 +38,6 @@
 			$_SESSION['error'] = "Usuario o contraseña incorrecto.";
 		}
 	}	
-	//header('Location: ../index.php');
+	header('Location: ../index.php');
 
 ?>
