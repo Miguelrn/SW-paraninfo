@@ -13,12 +13,12 @@
 				var valfecha = e.value == "" ? "ninguno" : e.value ;
 				
 				e = document.getElementById('comboBoxZona');
-				var valzona = e.options[e.selectedIndex].value;
+				var valdep = e.options[e.selectedIndex].value;
 			
-				console.log('./vista/consulta.php?fecha='+valfecha+'&zona='+valzona);
+				//console.log('./vista/consulta.php?fecha='+valfecha+'&zona='+valzona);
 				event.preventDefault();
 				
-			    $('#zona_central').load('./vista/consulta.php?fecha='+valfecha+'&zona='+valzona);
+			    $('#zona_central').load('./vista/consulta.php?fecha='+valfecha+'&deporte='+valdep);
 			
 			}
 		</script>
@@ -28,12 +28,23 @@
 				<legend><strong>RESERVAS</strong></legend>
 				DIA:</br><input type="date" id="fecha" name="fecha" required=""></br>
 				
-				ZONA:</br><select id="comboBoxZona">
-							<option value="norte">Norte</option>
-							<option value="sur">Sur</option> 
-							<option value="suroeste">Suroeste</option>
-							<option value="seniora">Nª Señora</option>
-							<option value="somosaguas">Somosaguas</option>
+				DEPORTE:</br><select id="comboBoxZona">
+							<option value="futbol">Futbol</option>
+							<option value="futbolsala">Futbol sala</option> 
+							<option value="balonmano">Balonmano</option>
+							<option value="baloncesto">Baloncesto</option>
+							<option value="rugby">Rugby</option>
+							<option value="tenis">Tenis</option>
+							<option value="piscina">Piscina</option>
+							<option value="polideportivo">Polideportivo</option>
+							<option value="atletismo">Atletismo</option>
+							<option value="fronton">Fronton</option>
+							<option value="salamultiple">Sala multiple</option>
+							<option value="musculacion">Musculacion</option>
+							<option value="padel">Padel</option>
+							<option value="rocodromo">Rocodromo</option>
+							<option value="voleibol">Voleibol</option>
+							<option value="playa">Volley playa</option>
 					 	 </select>
 				</br>
 				<button type="submit" class="btn-xs btn-info">Elegir hora</button>

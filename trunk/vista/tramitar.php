@@ -4,7 +4,7 @@
 	}
 ?>
 <div>
-	
+	<form action="./controlador/venta.php" method="post" accept-charset="utf-8">
 	<h3>Datos personales</h3>
 	Nombre: <?php echo $_SESSION['nombre']; ?> </br>
 	Apellidos: <?php echo $_SESSION['apellidos']; ?> </br>
@@ -24,7 +24,9 @@
 		}		
 	?>
 	<h3>Total: <?php echo $total ?>€</h3>
-	
+	<input type="numeric" requiered="" placeholder="Datos bancarios"/></br>
+	<input type="submit" value="Comprar" class="btn-xs btn-info"/>
+</form>
 	 <!-- FALTA COMPROBAR QUE LAS PISTAS NO ESTEN REPETIDAS Y QE SIGAN ESTANDO LIBRES -->
 		
 

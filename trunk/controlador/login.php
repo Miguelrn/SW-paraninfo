@@ -10,12 +10,7 @@
 		
 		if(!isset($_SESSION['logueado'])) $_SESSION['logueado'] = false;
 
-		//echo $pass.$r['fecha_registro'].$r['fecha'];
 		$pass = hash("sha256",$pass.$r['fecha_registro'].$r['fecha']);
-		
-		//echo $r['fecha_registro']."    ";
-		//echo $r['fecha'];
-		//echo $pass;
 		
 
 		$row = $BDD->conseguirDatosUsuario($nombreUser, $pass);

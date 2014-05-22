@@ -1,5 +1,5 @@
 <?php
-	$zona = $_GET['zona'];
+	$deporte = $_GET['deporte'];
 	$fecha = $_GET['fecha'];
 	require_once '../controlador/opbasededatos.php';
 	
@@ -32,19 +32,18 @@
 				echo "<h4> - Las horas marcadas en rojo ya estan reservadas. </h4>";
 				echo "<h4> - Puede ver sus reservas actuales en el apartado 'Reserva actual' del menu de la izquierda.</h4>";
 				
-				if(strcmp($zona,"norte") == 0){
-					$pistas = $BDD->pistasDisponibles("norte");
+				if(strcmp($deporte,"futbol") == 0){//ha elegido futbol
 					$consulta = $BDD->consultaPedido($fecha, "norte");//consulta las reservas realizadas en esta fecha
-					$rowConsulta = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
-					echo "<h3>Complejo deportivo zona Norte ($fecha) </h3>";
-					while($rowPista = mysqli_fetch_array($pistas, MYSQLI_ASSOC)){
-						?>
-						<h3><?php echo $rowPista['nombre']; ?></h3>
-						<form action="./controlador/reserva.php" method="get">
-							
-							<?php
-							for ($i=9; $i < 22; $i++) { //no estoy seguro de que horario tiene cada pista....comprobar !!!
-								if($rowConsulta['hora'] == $i && $rowConsulta['nombre_pista'] == $rowPista['nombre']){//la hora ya esta reservada
+					//$rowConsulta = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
+					if($consulta){//hay pistas en norte
+						echo "<h3>Complejo deportivo zona Norte ($fecha) </h3>";
+						//bucle while del numero de pistas
+						$numpistas = $BDD->numPistas($deporte, "norte");//consultamos el numero de pistas para el deporte en concreto
+						echo $numpistas['NumeroPistas'];
+						for($j = 0; $j < $numpistas['NumeroPistas']; $j++){//recorre las pistas
+						
+							for ($i=9; $i < 22; $i++) { 
+								if($rowConsulta['hora'] == $i && $rowConsulta['nombre_pista'] == $rowPista['nombre'] && $rowConsulta['numero_pista'] ==  $j){//la hora ya esta reservada
 									?><input type="button" name="hora" class="btn-sm btn-danger" value="<?php echo $i ?>"><?php
 									if(strcmp($rowConsulta['tipo_reserva'],'partido') == 0){
 										$i++;
@@ -54,196 +53,17 @@
 								}
 								else{//se puede seleccionar
 									?>
-									<input type="submit" type="button" name="hora" class="btn-sm btn-info" value="<?php echo $i ?>">
+										<input type="submit" type="button" name="hora" class="btn-sm btn-info" value="<?php echo $i ?>">
 									<?php	
 								}
 							}//fin del for
-							?>
-							
-							<input type="hidden" name="zona" value="norte"/>
-							<input type="hidden" name="tipo" value="<?php echo $rowPista['nombre'] ?>"/>
-							<input type="hidden" name="fecha" value="<?php echo $fecha ?>"/>
-							<?php
-								if((strcmp($rowPista['nombre'],"Futbol") == 0) || (strcmp($rowPista['nombre'],"Rugby")) == 0){
-							?>
-								<input type="radio" name="opcion" value="partido" required="">Partido
-								<input type="radio" name="opcion" value="1 hora" required="">1 Hora
-							<?php
-								}else{
-							?>
-								<input type="hidden" name="opcion" value="1 hora" required="">
-							<?php } ?>
-								
-						</form>
-						</br>
-						<?php
-					}//fin del if norte
 
-				}else if(strcmp($zona, "sur") == 0){
-					$pistas = $BDD->pistasDisponibles("sur");
-					$consulta = $BDD->consultaPedido($fecha, "sur");
-					$rowConsulta = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
-					echo "<h3>Complejo deportivo zona Sur ($fecha) </h3>";
-					while($rowPista = mysqli_fetch_array($pistas, MYSQLI_ASSOC)){
-						?>
-						<h3><?php echo $rowPista['nombre'] ?></h3>
-						<form action="./controlador/reserva.php" method="get">
-							<?php
-							for ($i=9; $i < 22; $i++) { //no estoy seguro de que horario tiene cada pista....comprobar !!!
-								if($rowConsulta['hora'] == $i && $rowConsulta['nombre_pista'] == $rowPista['nombre']){//la hora ya esta reservada
-									?><input type="button" name="hora" class="btn-sm btn-danger" value="<?php echo $i ?>"><?php
-									if(strcmp($rowConsulta['tipo_reserva'],'partido') == 0){
-										$i++;
-										?><input type="button" name="hora" class="btn-sm btn-danger" value="<?php echo $i ?>"><?php
-									}
-									$rowConsulta = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
-								}
-								else{//se puede seleccionar
-									?>
-									<input type="submit" type="button" name="hora" class="btn-sm btn-info" value="<?php echo $i ?>">
-									<?php	
-								}
-							}//fin del for
-							?>
-							<input type="hidden" name="zona" value="sur"/>
-							<input type="hidden" name="tipo" value="<?php echo $rowPista['nombre'] ?>"/>
-							<input type="hidden" name="fecha" value="<?php echo $fecha ?>"/>
-							<?php
-								if((strcmp($rowPista['nombre'],"Futbol") == 0) || (strcmp($rowPista['nombre'],"Rugby")) == 0){
-							?>
-								<input type="radio" name="opcion" value="partido" required="">Partido
-								<input type="radio" name="opcion" value="1 hora" required="">1 Hora
-							<?php
-								}else{
-							?>
-								<input type="hidden" name="opcion" value="1 hora" required="">
-							<?php } ?>
-						</form>
-						</br>
-						<?php
-
-					}//fin del if sur
-				}else if(strcmp($zona, "seniora") == 0){
-					$pistas = $BDD->pistasDisponibles("seniora");
-					$consulta = $BDD->consultaPedido($fecha, "seniora");
-					$rowConsulta = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
-					echo "<h3>Complejo deportivo zona Nª Señora de la Almudena ($fecha) </h3>";
-					while($rowPista = mysqli_fetch_array($pistas, MYSQLI_ASSOC)){
-						?>
-						<h3><?php echo $rowPista['nombre'] ?></h3>
-						<form action="./controlador/reserva.php" method="get">
-							<?php
-							for ($i=9; $i < 22; $i++) { //no estoy seguro de que horario tiene cada pista....comprobar !!!
-								if($rowConsulta['hora'] == $i && $rowConsulta['nombre_pista'] == $rowPista['nombre']){//la hora ya esta reservada
-									?><input type="button" name="hora" class="btn-sm btn-danger" value="<?php echo $i ?>"><?php
-									if(strcmp($rowConsulta['tipo_reserva'],'partido') == 0){
-										$i++;
-										?><input type="button" name="hora" class="btn-sm btn-danger" value="<?php echo $i ?>"><?php
-									}
-									$rowConsulta = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
-								}
-								else{//se puede seleccionar
-									?>
-									<input type="submit" type="button" name="hora" class="btn-sm btn-info" value="<?php echo $i ?>">
-									<?php	
-								}
-							}//fin del for
-							?>
-							<input type="hidden" name="zona" value="seniora"/>
-							<input type="hidden" name="tipo" value="<?php echo $rowPista['nombre'] ?>"/>
-							<input type="hidden" name="fecha" value="<?php echo $fecha ?>"/>
-							<input type="radio" name="opcion" value="1 banio" required="">1 Baño
-							<input type="radio" name="opcion" value="10 banios" required="">10 Baños
-							<input type="radio" name="opcion" value="1 calle" required="">1 calle
-						</form>
-						<?php
-					}//fin del if seniora
-				}else if(strcmp($zona, "suroeste") == 0){
-					$pistas = $BDD->pistasDisponibles("suroeste");
-					$consulta = $BDD->consultaPedido($fecha, "suroeste");
-					$rowConsulta = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
-					echo "<h3>Complejo deportivo zona Suroeste ($fecha) </h3>";
-					while($rowPista = mysqli_fetch_array($pistas, MYSQLI_ASSOC)){
-						?>
-							<h3><?php echo $rowPista['nombre'] ?></h3>
-						<form action="./controlador/reserva.php" method="get">
-							<?php
-							for ($i=9; $i < 22; $i++) { //no estoy seguro de que horario tiene cada pista....comprobar !!!
-								if($rowConsulta['hora'] == $i && $rowConsulta['nombre_pista'] == $rowPista['nombre']){//la hora ya esta reservada
-									?><input type="button" name="hora" class="btn-sm btn-danger" value="<?php echo $i ?>"><?php
-									if(strcmp($rowConsulta['tipo_reserva'],'partido') == 0){
-										$i++;
-										?><input type="button" name="hora" class="btn-sm btn-danger" value="<?php echo $i ?>"><?php
-									}
-									$rowConsulta = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
-								}
-								else{//se puede seleccionar
-									?>
-									<input type="submit" type="button" name="hora" class="btn-sm btn-info" value="<?php echo $i ?>">
-									<?php	
-								}
-							}//fin del for
-							?>
-							<input type="hidden" name="zona" value="suroeste"/>
-							<input type="hidden" name="tipo" value="<?php echo $rowPista['nombre'] ?>"/>
-							<input type="hidden" name="fecha" value="<?php echo $fecha ?>"/>
-							<?php
-								if((strcmp($rowPista['nombre'],"Futbol") == 0) || (strcmp($rowPista['nombre'],"Rugby")) == 0){
-							?>
-								<input type="radio" name="opcion" value="partido" required="">Partido
-								<input type="radio" name="opcion" value="1 hora" required="">1 Hora
-							<?php
-								}else{
-							?>
-								<input type="hidden" name="opcion" value="1 hora" required="">
-							<?php } ?>
-						</form>
-						</br>
-						<?php
-					}//fin del if suroeste
-				}else if(strcmp($zona, "somosaguas") == 0){
-					$pistas = $BDD->pistasDisponibles("somosaguas");
-					$consulta = $BDD->consultaPedido($fecha, "somosaguas");
-					$rowConsulta = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
-					echo "<h3>Complejo deportivo zona Somosaguas ($fecha) </h3>";
-					while($rowPista = mysqli_fetch_array($pistas, MYSQLI_ASSOC)){
-						?>
-						<h3><?php echo $rowPista['nombre'] ?></h3>
-						<form action="./controlador/reserva.php" method="get">
-							<?php
-							for ($i=9; $i < 22; $i++) { //no estoy seguro de que horario tiene cada pista....comprobar !!!
-								if($rowConsulta['hora'] == $i && $rowConsulta['nombre_pista'] == $rowPista['nombre']){//la hora ya esta reservada
-									?><input type="button" name="hora" class="btn-sm btn-danger" value="<?php echo $i ?>"><?php
-									if(strcmp($rowConsulta['tipo_reserva'],'partido') == 0){
-										$i++;
-										?><input type="button" name="hora" class="btn-sm btn-danger" value="<?php echo $i ?>"><?php
-									}
-									$rowConsulta = mysqli_fetch_array($consulta, MYSQLI_ASSOC);
-								}
-								else{//se puede seleccionar
-									?>
-									<input type="submit" type="button" name="hora" class="btn-sm btn-info" value="<?php echo $i ?>">
-									<?php	
-								}
-							}//fin del for
-							?>
-							<input type="hidden" name="zona" value="somosaguas"/>
-							<input type="hidden" name="tipo" value="<?php echo $rowPista['nombre'] ?>"/>
-							<input type="hidden" name="fecha" value="<?php echo $fecha ?>"/>
-							<?php
-								if((strcmp($rowPista['nombre'],"Futbol") == 0) || (strcmp($rowPista['nombre'],"Rugby")) == 0){
-							?>
-								<input type="radio" name="opcion" value="partido" required="">Partido
-								<input type="radio" name="opcion" value="1 hora" required="">1 Hora
-							<?php
-								}else{
-							?>
-								<input type="hidden" name="opcion" value="1 hora" required="">
-							<?php } ?>
-						</form>
-						<?php
-					}//fin del if somosaguas
-				}
+						}//fin del for
+						
+					}//fin del if
+					
+				
+				}//fin de futbol
 			}
 		;?>
 

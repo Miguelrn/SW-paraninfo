@@ -88,7 +88,7 @@
 				$tipo = $BDD->limpia_sql($_POST['os2_']);
 				$zona = $BDD->limpia_sql($_POST['os3_']);
 					
-				$BDD->insertarPedido($id_user, $txt_id, $payer_email, $reservas[$i][1], $reservas[$i][5], $reservas[$i][2], $reservas[$i][3], $reservas[$i][4], $reservas[$i][6]);
+				$BDD->insertarPedidoPaypal($id_user, $txt_id, $payer_email, $reservas[$i][1], $reservas[$i][5], $reservas[$i][2], $reservas[$i][3], $reservas[$i][4], $reservas[$i][6]);
 			}
 			
 			unset($_SESSION['reserva']);//no los borra OJO
