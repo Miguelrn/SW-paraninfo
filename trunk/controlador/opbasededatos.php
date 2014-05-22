@@ -80,14 +80,12 @@ class Mysql { // estaba puesto en minúsculas todo
 	}
 	
 	public function consultaPedido($fecha, $zona){
-		$consulta = "select * from pedidos where fecha = '$fecha' and zona='$zona' order by nombre_pista, hora";//not sure
+		$consulta = "select * from pedidos where fecha = '$fecha' and zona='$zona' order by nombre_pista, NumeroPistas, hora";//not sure
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
-		$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
 		$this->cerrar();
 		unset($consulta);
-		unset($resultado);
-		return $r;
+		return $resultado;
 	}
 	
 	public function pistasDisponibles($zona){
@@ -120,8 +118,8 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $r;
 	}
 	
-	public function insertarPedidoPaypal($id_user, $txn_id, $email, $nombre_pista, $precio, $fecha, $hora, $tipo_reserva, $zona){
-		$consulta = "insert into pedidos (id_user, txn_id, email, nombre_pista, precio, fecha, hora, tipo_reserva, zona)
+	public function insertarPedidoPaypal($id_user, $txn_id, $email, $nombre_pista, $precio, $fecha, $hora, $tipo_reserva, $zona, $numpista){
+		$consulta = "insert into pedidos (id_user, txn_id, email, nombre_pista, NumeroPista, precio, fecha, hora, tipo_reserva, zona)
 		values('$id_user', '$txn_id', '$email', '$nombre_pista', '$precio', '$fecha', '$hora', '$tipo_reserva', '$zona')";
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
@@ -130,9 +128,9 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $resultado;
 	}
 	
-	public function insertarPedido($id_user, $nombre_pista, $fecha, $hora, $tipo_reserva, $zona){
-        $consulta = "insert into pedidos (id_user, nombre_pista, fecha, hora, tipo_reserva, zona)
-        values('$id_user', '$nombre_pista', '$fecha', '$hora', '$tipo_reserva', '$zona')";
+	public function insertarPedido($id_user, $nombre_pista, $fecha, $hora, $tipo_reserva, $zona, $numpista){
+        $consulta = "insert into pedidos (id_user, nombre_pista, NumeroPistas, fecha, hora, tipo_reserva, zona)
+        values('$id_user', '$nombre_pista', '$numpista','$fecha', '$hora', '$tipo_reserva', '$zona')";
         $this->conectar();
         $resultado = mysqli_query($this->conexion,$consulta);
         $this->cerrar();
@@ -252,12 +250,14 @@ class Mysql { // estaba puesto en minúsculas todo
 	}	
 	
 	public function numPistas($deporte, $zona){
-		$consulta = "select NumeroPistas from pistas where nombre='$deporte' and zona='$zona' ";
+		$consulta = "select NumeroPistas from pistas where nombre='$deporte' and zona='$zona'";
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
+		$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
 		$this->cerrar();
 		unset($consulta);
-		return $resultado;
+		unset($resultado);
+		return $r;
 	}
 	
 	public function cerrar () {
