@@ -80,12 +80,14 @@ class Mysql { // estaba puesto en minúsculas todo
 	}
 	
 	public function consultaPedido($fecha, $zona){
-		$consulta = "select * from pedidos where fecha = '$fecha' and zona='$zona' order by nombre_pista, hora";
+		$consulta = "select * from pedidos where fecha = '$fecha' and zona='$zona' order by nombre_pista, hora";//not sure
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
+		$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
 		$this->cerrar();
 		unset($consulta);
-		return $resultado;
+		unset($resultado);
+		return $r;
 	}
 	
 	public function pistasDisponibles($zona){
@@ -118,7 +120,7 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $r;
 	}
 	
-public function insertarPedido($id_user, $txn_id, $email, $nombre_pista, $precio, $fecha, $hora, $tipo_reserva, $zona){
+	public function insertarPedidoPaypal($id_user, $txn_id, $email, $nombre_pista, $precio, $fecha, $hora, $tipo_reserva, $zona){
 		$consulta = "insert into pedidos (id_user, txn_id, email, nombre_pista, precio, fecha, hora, tipo_reserva, zona)
 		values('$id_user', '$txn_id', '$email', '$nombre_pista', '$precio', '$fecha', '$hora', '$tipo_reserva', '$zona')";
 		$this->conectar();
@@ -127,6 +129,16 @@ public function insertarPedido($id_user, $txn_id, $email, $nombre_pista, $precio
 		unset($consulta);
 		return $resultado;
 	}
+	
+	public function insertarPedido($id_user, $nombre_pista, $fecha, $hora, $tipo_reserva, $zona){
+        $consulta = "insert into pedidos (id_user, nombre_pista, fecha, hora, tipo_reserva, zona)
+        values('$id_user', '$nombre_pista', '$fecha', '$hora', '$tipo_reserva', '$zona')";
+        $this->conectar();
+        $resultado = mysqli_query($this->conexion,$consulta);
+        $this->cerrar();
+        unset($consulta);
+        return $resultado;
+    }
 	
 	public function consultarPedidosUser($usuario){
 		$consulta = "select * from pedidos where id_user='$usuario'";
@@ -229,6 +241,7 @@ public function insertarPedido($id_user, $txn_id, $email, $nombre_pista, $precio
 		unset($consulta);
 		return mysqli_affected_rows($this->conexion) == 1;
 	}
+	
 	public function deleteUser($id) {
 		$consulta = "delete from usuario where id='$id'";
 		$this->conectar();
@@ -237,6 +250,15 @@ public function insertarPedido($id_user, $txn_id, $email, $nombre_pista, $precio
 		unset($consulta);
 		return $resultado;
 	}	
+	
+	public function numPistas($deporte, $zona){
+		$consulta = "select NumeroPistas from pistas where nombre='$deporte' and zona='$zona' ";
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;
+	}
 	
 	public function cerrar () {
         @mysql_close($this->conexion);

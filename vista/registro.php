@@ -12,20 +12,7 @@
 		Fecha de Nacimiento</br><input class="registro" type="date" name="fecha" placeholder="dd/mm/aaaa" required=""></br>
 	</fieldSet>	
 	</br>			
-	<!--&#191C&oacute;mo nos conociste?<br>
-	<input type="checkbox" name="conocer">
-		A trav&eacute;s de un amigo.<br>
-	<input type="checkbox" name="conocer">
-		A trav&eacute;s de un buscador.<br>
-	<input type="checkbox" name="conocer">
-		Navegando por la red.<br>
-	<input type="checkbox" name="conocer">
-		Otros
-	<br><br>
-		
-	Opini&oacute;n sobre nuestra p&aacute;gina web<br>
-	<textarea id="texto" name="opinion" placeholder="Escriba aqui su opinion..."></textarea><br><br>
--->
+	
 		
 	<div>
 		<input type="submit" type="button" class="btn-xs btn-info" value="Enviar Formulario">
