@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-05-2014 a las 16:20:49
+-- Tiempo de generación: 22-05-2014 a las 18:50:41
 -- Versión del servidor: 5.5.32
 -- Versión de PHP: 5.4.19
 
@@ -60,65 +60,8 @@ CREATE TABLE IF NOT EXISTS `logeos` (
 --
 
 INSERT INTO `logeos` (`id_user`, `correo`, `fecha`) VALUES
-(10, 'k@k.com', '2014-05-09 20:57:36'),
-(1, 'chicote@gmail.com', '2014-05-09 21:08:11'),
-(1, 'chicote@gmail.com', '2014-05-09 21:21:27'),
-(1, 'chicote@gmail.com', '2014-05-09 21:23:35'),
-(1, 'chicote@gmail.com', '2014-05-09 21:24:15'),
-(1, 'chicote@gmail.com', '2014-05-09 21:33:19'),
-(1, 'chicote@gmail.com', '2014-05-09 21:33:56'),
-(1, 'chicote@gmail.com', '2014-05-10 08:08:48'),
-(6, 'admin@admin.com', '2014-05-10 08:10:10'),
-(9, 'm@m.com', '2014-05-10 08:11:06'),
-(10, 'k@k.com', '2014-05-10 08:11:49'),
-(1, 'chicote@gmail.com', '2014-05-10 08:30:14'),
-(1, 'chicote@gmail.com', '2014-05-10 08:36:02'),
-(1, 'chicote@gmail.com', '2014-05-10 08:36:16'),
-(10, 'k@k.com', '2014-05-10 08:38:32'),
-(6, 'admin@admin.com', '2014-05-10 08:40:35'),
-(6, 'admin@admin.com', '2014-05-10 08:49:25'),
-(6, 'admin@admin.com', '2014-05-10 08:51:21'),
-(6, 'admin@admin.com', '2014-05-10 08:53:32'),
-(11, '', '2014-05-10 08:58:15'),
-(12, '', '2014-05-10 09:09:42'),
-(12, '1@1.es', '2014-05-10 09:12:37'),
-(12, '1@1.es', '2014-05-10 09:17:41'),
-(12, '1@1.es', '2014-05-10 09:18:17'),
-(13, '', '2014-05-10 19:17:46'),
-(13, '', '2014-05-10 19:38:02'),
-(15, '', '2014-05-10 19:44:49'),
-(16, '', '2014-05-10 19:46:41'),
-(17, '', '2014-05-10 19:54:17'),
-(17, '', '2014-05-10 20:01:42'),
-(17, '', '2014-05-10 20:18:34'),
-(20, '', '2014-05-10 21:09:02'),
-(21, '', '2014-05-10 21:44:16'),
-(22, '', '2014-05-10 21:55:53'),
-(22, '1111@1.com', '2014-05-10 21:56:44'),
-(1, 'chicote@gmail.com', '2014-05-11 09:12:25'),
-(11, 'pavon@p.com', '2014-05-11 09:15:42'),
-(23, '', '2014-05-11 09:16:33'),
-(23, 'conchita@travelo.com', '2014-05-11 09:17:11'),
-(1, 'chicote@gmail.com', '2014-05-11 20:19:31'),
-(24, '', '2014-05-12 10:58:19'),
-(1, 'chicote@gmail.com', '2014-05-12 11:39:50'),
-(25, '', '2014-05-12 11:41:59'),
-(1, 'chicote@gmail.com', '2014-05-12 13:24:34'),
-(1, 'chicote@gmail.com', '2014-05-12 14:24:39'),
-(1, 'chicote@gmail.com', '2014-05-12 21:00:36'),
-(1, 'chicote@gmail.com', '2014-05-13 07:08:04'),
-(1, 'chicote@gmail.com', '2014-05-13 07:09:06'),
-(1, 'chicote@gmail.com', '2014-05-13 07:12:21'),
-(1, 'chicote@gmail.com', '2014-05-14 09:46:30'),
-(6, 'admin@admin.com', '2014-05-15 21:47:50'),
-(1, 'chicote@gmail.com', '2014-05-15 22:54:23'),
-(26, '', '2014-05-17 20:47:03'),
-(26, 'sa@sa.com', '2014-05-17 20:47:16'),
-(26, 'sa@sa.com', '2014-05-18 11:52:32'),
-(26, 'sa@sa.com', '2014-05-18 12:48:46'),
-(26, 'sa@sa.com', '2014-05-18 17:27:09'),
-(6, 'admin@admin.com', '2014-05-19 14:18:55'),
-(1, 'chicote@gmail.com', '2014-05-19 14:19:54');
+(10, 'k@k.com', '2014-05-09 20:57:36');
+
 
 -- --------------------------------------------------------
 
@@ -132,32 +75,23 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `txn_id` varchar(19) NOT NULL,
   `email` varchar(50) NOT NULL,
   `nombre_pista` varchar(50) NOT NULL,
+  `NumeroPistas` int(11) NOT NULL DEFAULT '1',
   `precio` decimal(6,2) NOT NULL,
   `fecha` date NOT NULL,
   `hora` int(2) NOT NULL,
   `tipo_reserva` varchar(30) NOT NULL,
   `zona` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
 
 --
 -- Volcado de datos para la tabla `pedidos`
 --
 
-INSERT INTO `pedidos` (`id`, `id_user`, `txn_id`, `email`, `nombre_pista`, `precio`, `fecha`, `hora`, `tipo_reserva`, `zona`) VALUES
-(1, 1, '', '', 'Polideportivo', '0.00', '2014-04-30', 9, '1 hora', 'somosaguas'),
-(2, 1, '', '', 'Piscina', '0.00', '2014-04-29', 9, '1 calle', 'seniora'),
-(3, 1, '', '', 'Rugby', '0.00', '2014-04-28', 12, 'partido', 'suroeste'),
-(7, 1, '', '', 'Futbol', '0.00', '2014-04-30', 9, 'partido', 'norte'),
-(10, 1, '', '', 'Atletismo', '0.00', '2014-04-30', 9, '1 hora', 'sur'),
-(11, 1, '', '', 'Piscina', '0.00', '2014-04-30', 9, '1 calle', 'seniora'),
-(12, 1, '', '', 'Rugby', '0.00', '2014-04-30', 9, 'partido', 'suroeste'),
-(14, 1, '', '', 'Baloncesto', '0.00', '2014-05-31', 21, '1 hora', 'norte'),
-(15, 1, '', '', 'Baloncesto', '0.00', '2014-05-31', 10, '1 hora', 'norte'),
-(16, 1, '', '', 'Baloncesto', '0.00', '2014-05-31', 11, '1 hora', 'norte'),
-(17, 1, '', '', 'Futbol', '0.00', '2014-05-31', 20, 'partido', 'norte'),
-(18, 1, '', '', 'Rugby', '0.00', '2014-05-31', 9, 'partido', 'sur'),
-(19, 1, '', '', 'Baloncesto', '0.00', '2014-05-29', 19, '1 hora', 'norte');
+INSERT INTO `pedidos` (`id`, `id_user`, `txn_id`, `email`, `nombre_pista`, `NumeroPistas`, `precio`, `fecha`, `hora`, `tipo_reserva`, `zona`) VALUES
+(22, 1, '', '', 'Futbol', 2, '0.00', '2014-05-31', 12, '1 hora', 'norte'),
+(23, 1, '', '', 'Futbol', 1, '0.00', '2014-05-31', 15, '1 hora', 'norte'),
+(20, 1, '', '', 'Futbol', 1, '0.00', '2014-05-31', 9, 'partido', 'norte');
 
 -- --------------------------------------------------------
 
@@ -169,6 +103,7 @@ CREATE TABLE IF NOT EXISTS `pistas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   `zona` varchar(30) NOT NULL,
+  `NumeroPistas` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
@@ -176,31 +111,31 @@ CREATE TABLE IF NOT EXISTS `pistas` (
 -- Volcado de datos para la tabla `pistas`
 --
 
-INSERT INTO `pistas` (`id`, `nombre`, `zona`) VALUES
-(1, 'Futbol', 'norte'),
-(2, 'Futbol sala', 'norte'),
-(3, 'Balonmano', 'norte'),
-(4, 'Baloncesto', 'norte'),
-(5, 'Rugby', 'norte'),
-(6, 'Tenis', 'norte'),
-(7, 'Piscina', 'seniora'),
-(8, 'Polideportivo', 'somosaguas'),
-(9, 'Atletismo', 'sur'),
-(10, 'Balonmano', 'sur'),
-(11, 'Baloncesto', 'sur'),
-(12, 'Fronton', 'sur'),
-(13, 'Futbol', 'sur'),
-(14, 'Sala Multiple', 'sur'),
-(15, 'Musculacion', 'sur'),
-(16, 'Padel', 'sur'),
-(17, 'Piscina', 'sur'),
-(18, 'Rocodromo', 'sur'),
-(19, 'Rugby', 'sur'),
-(20, 'Tenis', 'sur'),
-(21, 'Voleibol', 'sur'),
-(22, 'Volley playa', 'sur'),
-(23, 'Sala columnas', 'sur'),
-(24, 'Rugby', 'suroeste');
+INSERT INTO `pistas` (`id`, `nombre`, `zona`, `NumeroPistas`) VALUES
+(1, 'Futbol', 'norte', 2),
+(2, 'Futbol sala', 'norte', 1),
+(3, 'Balonmano', 'norte', 1),
+(4, 'Baloncesto', 'norte', 1),
+(5, 'Rugby', 'norte', 1),
+(6, 'Tenis', 'norte', 1),
+(7, 'Piscina', 'seniora', 1),
+(8, 'Polideportivo', 'somosaguas', 1),
+(9, 'Atletismo', 'sur', 1),
+(10, 'Balonmano', 'sur', 1),
+(11, 'Baloncesto', 'sur', 1),
+(12, 'Fronton', 'sur', 1),
+(13, 'Futbol', 'sur', 1),
+(14, 'Sala Multiple', 'sur', 1),
+(15, 'Musculacion', 'sur', 1),
+(16, 'Padel', 'sur', 1),
+(17, 'Piscina', 'sur', 1),
+(18, 'Rocodromo', 'sur', 1),
+(19, 'Rugby', 'sur', 1),
+(20, 'Tenis', 'sur', 1),
+(21, 'Voleibol', 'sur', 1),
+(22, 'Volley playa', 'sur', 1),
+(23, 'Sala columnas', 'sur', 1),
+(24, 'Rugby', 'suroeste', 1);
 
 -- --------------------------------------------------------
 

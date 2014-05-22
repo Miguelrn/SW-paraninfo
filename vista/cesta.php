@@ -29,22 +29,22 @@
 				DIA:</br><input type="date" id="fecha" name="fecha" required=""></br>
 				
 				DEPORTE:</br><select id="comboBoxZona">
-							<option value="futbol">Futbol</option>
-							<option value="futbolsala">Futbol sala</option> 
-							<option value="balonmano">Balonmano</option>
-							<option value="baloncesto">Baloncesto</option>
-							<option value="rugby">Rugby</option>
-							<option value="tenis">Tenis</option>
-							<option value="piscina">Piscina</option>
-							<option value="polideportivo">Polideportivo</option>
-							<option value="atletismo">Atletismo</option>
-							<option value="fronton">Fronton</option>
-							<option value="salamultiple">Sala multiple</option>
-							<option value="musculacion">Musculacion</option>
-							<option value="padel">Padel</option>
-							<option value="rocodromo">Rocodromo</option>
-							<option value="voleibol">Voleibol</option>
-							<option value="playa">Volley playa</option>
+							<option value="Futbol">Futbol</option>
+							<option value="Futbol sala">Futbol sala</option> 
+							<option value="Balonmano">Balonmano</option>
+							<option value="Baloncesto">Baloncesto</option>
+							<option value="Rugby">Rugby</option>
+							<option value="Tenis">Tenis</option>
+							<option value="Piscina">Piscina</option>
+							<option value="Polideportivo">Polideportivo</option>
+							<option value="Atletismo">Atletismo</option>
+							<option value="Fronton">Fronton</option>
+							<option value="Sala multiple">Sala multiple</option>
+							<option value="Musculacion">Musculacion</option>
+							<option value="Padel">Padel</option>
+							<option value="Rocodromo">Rocodromo</option>
+							<option value="Voleibol">Voleibol</option>
+							<option value="Volley playa">Volley playa</option>
 					 	 </select>
 				</br>
 				<button type="submit" class="btn-xs btn-info">Elegir hora</button>

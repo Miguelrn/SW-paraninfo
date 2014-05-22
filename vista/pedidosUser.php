@@ -26,6 +26,7 @@
 					    <th>Fecha</th>
 					    <th>Hora</th>
 					    <th>Tipo Reserva</th>
+					    <th>Numero Pista</th>
 					    <th>Zona</th>
 			  		</tr>
 				</thead>
@@ -41,6 +42,7 @@
 						<th><?php print $row['fecha']?></th>
 						<th><?php print $row['hora'].":00"?></th>
 						<th><?php print $row['tipo_reserva']?></th>
+						<th><?php print $row['NumeroPistas']?></th>
 						<th><?php print $row['zona']?></th>
 					</tr>
 		

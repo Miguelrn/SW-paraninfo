@@ -17,6 +17,7 @@
 		    		<th>Fecha</th>
 				    <th>Hora</th>
 				    <th>Tipo reserva</th>
+				    <th>Numero Pista</th>
 				    <th>Precio</th>
 				    <th>Cancelar</th>
 		  		</tr>
@@ -33,6 +34,7 @@
 						<th><?php echo ($reservas[$i][2])?></th><!-- fecha -->
 						<th><?php echo ($reservas[$i][3]).":00"?></th><!-- hora -->
 						<th><?php echo ($reservas[$i][4])?></th><!-- tipo reserva -->
+						<th><?php echo ($reservas[$i][7])?></th><!--Numero pista -->
 						<th><?php echo ($reservas[$i][5]."€") ?></th><!-- Precio -->
 						<th><button name="delete" type="button" class="btn-group-xs btn-info" onclick="borraReserva(<?php echo $i ?>)">X</button></tr>
 					</tr>	

@@ -12,7 +12,10 @@
 			$hora = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_GET['hora']))));
 			$fecha = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_GET['fecha']))));
 			$tipo_reserva = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_GET['opcion']))));
+			$num_pista = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_GET['numpista']))));
 	
+			//echo $id_user." ".$zona_pista." ".$tipo_pista." ".$hora." ".$fecha." ".$tipo_reserva." ".$num_pista;
+			
 			if(!isset($_SESSION['reserva'])){
 				$_SESSION['reserva'] = array();
 			}
@@ -37,8 +40,9 @@
 			//el array de la reserva va a tener id_user, nombre_pista, fecha, hora, tipo_reserva, precio
 			$lista = $_SESSION['reserva']; 	
 			$size = count($lista);
-			$lista[$size] = array($id_user, $tipo_pista, $fecha, $hora, $tipo_reserva, $precio['precio'], $zona_pista);
+			$lista[$size] = array($id_user, $tipo_pista, $fecha, $hora, $tipo_reserva, $precio['precio'], $zona_pista, $num_pista);
 			$_SESSION['reserva'] = $lista;
+			//print_r($_SESSION['reserva']);
 		}
 	}	
 	
