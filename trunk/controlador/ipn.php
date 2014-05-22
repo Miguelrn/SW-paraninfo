@@ -24,17 +24,26 @@
 	
 	$BDD = new Mysql();
 	
-	if(isset($_SESSION['id'])){
+	/*if(isset($_SESSION['id'])){
 		$id_user = $_SESSION['id'];
 	}	
 	else{
 		$user = $_SESSION['user'];
 		$row = $BDD->consultaId($user);
 		$id_user = $row['id'];
+	}*/
+	
+	if (strcmp ($res, "Verified") == 0) {
+    	// The IPN is verified, process it
+    	mail('ppaypal@paraninfo.tk', 'Valid', 'verificado');
+	} else if (strcmp ($res, "Invalid") == 0) {
+	    // IPN invalid, log for manual investigation
+    	mail('ppaypal@paraninfo.tk', 'inValid', 'invalido');
 	}
-	
-	
-	if ($verified) {
+	else{
+		mail('ppaypal@paraninfo.tk', 'otro', 'otro');
+	}
+	/*if ($verified) {
 	
 	    $errmsg = '';
 	    
@@ -91,7 +100,7 @@
 	} else {
 	    // manually investigate the invalid IPN
 	    mail('ppaypal@paraninfo.tk', 'Invalid IPN', $listener->getTextReport());
-	}
+	}*/
 	
 	//header('Location: ../index.php');
 
