@@ -32,9 +32,9 @@ if ($usuarioLogueado){
 	};
 </script>
 	<form action="controlador/login.php" method="post" accept-charset="utf-8">
-			<input type="text" name="user" placeholder="Usuario" required="">
-			<input type="password" name="pass" placeholder="Contraseña" required="">
-			<input name="start_login" class="btn btn-xs btn-info" type="submit" value="Entrar"></br>
+			<label>Usuario:<input type="text" name="user" placeholder="Usuario" required=""></label>
+			<label>Contraseña:<input type="password" name="pass" placeholder="Contraseña" required=""></label>
+			<input name="start_login" class="btn btn-xs btn-info" type="submit" value="Entrar"><br>
 			
 			<a class="fuenteSubtitulo" href="#" onclick="nuevouser()">¿Eres nuevo?</a><br>
 	</form>	
