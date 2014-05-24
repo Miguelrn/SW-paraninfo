@@ -23,14 +23,14 @@
 			}
 		</script>
 		
-		<form onsubmit="muestraConsulta()" action="" method="get">
+		<form onsubmit="muestraConsulta()" method="get">
 			<fieldset>
 				<legend><strong>RESERVAS</strong></legend>
-				DIA:</br><input type="date" id="fecha" name="fecha" required=""></br>
+				<label>DIA:<br><input type="date" id="fecha" name="fecha" required></label><br>
 				
-				DEPORTE:</br><select id="comboBoxZona">
+				<label>DEPORTE:<br><select id="comboBoxZona">
 							<option value="Futbol">Futbol</option>
-							<option value="Futbol sala">Futbol sala</option> 
+							<option value="Futbol_sala">Futbol sala</option> 
 							<option value="Balonmano">Balonmano</option>
 							<option value="Baloncesto">Baloncesto</option>
 							<option value="Rugby">Rugby</option>
@@ -39,14 +39,14 @@
 							<option value="Polideportivo">Polideportivo</option>
 							<option value="Atletismo">Atletismo</option>
 							<option value="Fronton">Fronton</option>
-							<option value="Sala multiple">Sala multiple</option>
+							<option value="Sala_multiple">Sala multiple</option>
 							<option value="Musculacion">Musculacion</option>
 							<option value="Padel">Padel</option>
 							<option value="Rocodromo">Rocodromo</option>
 							<option value="Voleibol">Voleibol</option>
-							<option value="Volley playa">Volley playa</option>
-					 	 </select>
-				</br>
+							<option value="Volley_playa">Volley playa</option>
+					 	 </select></label>
+				<br>
 				<button type="submit" class="btn-xs btn-info">Elegir hora</button>
 			</fieldset>
 		</form>
@@ -107,6 +107,9 @@
 			function precios(){
 				$('#zona_central').load('./vista/muestraPrecios.php');
 			}
+			function pistas(){
+				$('#zona_central').load('./vista/muestraPistas.php');
+			}
 		</script>
 	
 		<!-- ADMINISTRADOR -->	
@@ -117,6 +120,7 @@
 				<li><a href="#" onclick="pedidos()">Mostrar pedidos</a></li>
 				<li><a href="#" onclick="usuarios()">Mostrar/Baja usuarios</a></li>
 				<li><a href="#" onclick="precios()">Editar precios</a></li>
+				<li><a href="#" onclick="pistas()">Editar pistas</a></li>
 			</ul>
 		</fieldset>
 	

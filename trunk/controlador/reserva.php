@@ -26,7 +26,7 @@
 				$precio = $BDD->consultaPrecio($tipo_pista."-".$zona_pista, $tipo_reserva);
 				//echo $tipo_pista."-".$zona_pista."--".$tipo_reserva;
 			}
-			else if((strcmp($tipo_pista, "Tenis") == 0) || (strcmp($tipo_pista, "Padel") == 0) || (strcmp($tipo_pista, "Volley playa") == 0)){
+			else if((strcmp($tipo_pista, "Tenis") == 0) || (strcmp($tipo_pista, "Padel") == 0) || (strcmp($tipo_pista, "Volley_playa") == 0)){
 				if($hora <= "12"){//antes del mediodia
 					$precio = $BDD->consultaPrecio($tipo_pista, "antes 12");	
 				}
@@ -42,7 +42,6 @@
 			$size = count($lista);
 			$lista[$size] = array($id_user, $tipo_pista, $fecha, $hora, $tipo_reserva, $precio['precio'], $zona_pista, $num_pista);
 			$_SESSION['reserva'] = $lista;
-			//print_r($_SESSION['reserva']);
 		}
 	}	
 	

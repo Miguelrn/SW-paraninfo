@@ -22,6 +22,8 @@ class Mysql { // estaba puesto en minúsculas todo
 
 		$link = mysqli_connect($this->host,$this->user,$this->clave, $this->bd);
 		
+		$texto = htmlspecialchars(trim(strip_tags($texto)));
+		
 		if (get_magic_quotes_gpc()){
 			$texto = stripslashes($texto);//quita /
 		}	
@@ -79,8 +81,8 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $resultado;
 	}
 	
-	public function consultaPedido($fecha, $zona){
-		$consulta = "select * from pedidos where fecha = '$fecha' and zona='$zona' order by nombre_pista, NumeroPistas, hora";//not sure
+	public function consultaPedido($fecha, $zona, $deporte){
+		$consulta = "select * from pedidos where fecha = '$fecha' and zona='$zona' and nombre_pista='$deporte' order by nombre_pista, NumeroPistas, hora";//not sure
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
 		$this->cerrar();
@@ -174,6 +176,15 @@ class Mysql { // estaba puesto en minúsculas todo
 		return $resultado;
 	}
 	
+	public function consultarPistas(){
+		$consulta = "select * from pistas";
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		$this->cerrar();
+		unset($consulta);
+		return $resultado;
+	}
+	
 	public function encuestaRealizada($id){//poner al usuario como que ha realizado la encuesta
 		$consulta = "update usuario set encuesta=1 where id='$id'";
 		$this->conectar();
@@ -214,6 +225,17 @@ class Mysql { // estaba puesto en minúsculas todo
 	
 	public function updatePreciosPistas($id, $precio){
 		$consulta = "update precios set precio='$precio' where id = '$id'";
+		$this->conectar();
+		$resultado = mysqli_query($this->conexion,$consulta);
+		//$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+		$this->cerrar();
+		unset($consulta);
+		return mysqli_affected_rows($this->conexion) > 0;
+	}
+	
+	public function updateNumeroPistas($id, $pistas){
+		$consulta = "update pistas set NumeroPistas='$pistas' where id = '$id'";
+		//echo $consulta;
 		$this->conectar();
 		$resultado = mysqli_query($this->conexion,$consulta);
 		//$r=mysqli_fetch_array($resultado, MYSQLI_ASSOC);

@@ -32,7 +32,7 @@
 					<tr>
 						<th><?php echo ($reservas[$i][1])?></th><!-- nombre -->
 						<th><?php echo ($reservas[$i][2])?></th><!-- fecha -->
-						<th><?php echo ($reservas[$i][3]).":00"?></th><!-- hora -->
+						<th><?php echo ($reservas[$i][3])?></th><!-- hora -->
 						<th><?php echo ($reservas[$i][4])?></th><!-- tipo reserva -->
 						<th><?php echo ($reservas[$i][7])?></th><!--Numero pista -->
 						<th><?php echo ($reservas[$i][5]."€") ?></th><!-- Precio -->
