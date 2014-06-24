@@ -13,18 +13,15 @@
 			$fecha = $BDD->limpia_sql($_GET['fecha']);
 			$tipo_reserva = $BDD->limpia_sql($_GET['opcion']);
 			$num_pista = $BDD->limpia_sql($_GET['numpista']);
-	
-			//echo $id_user." ".$zona_pista." ".$tipo_pista." ".$hora." ".$fecha." ".$tipo_reserva." ".$num_pista;
 			
 			if(!isset($_SESSION['reserva'])){
 				$_SESSION['reserva'] = array();
 			}
 			
-			//consultar el precio y aÃ±adirlo al array de la reserva
+			//consultar el precio y añadirlo al array de la reserva
 			$BDD = new Mysql();
 			if((strcmp($tipo_pista, "Futbol") == 0) || (strcmp($tipo_pista, "Piscina")) == 0){
 				$precio = $BDD->consultaPrecio($tipo_pista."-".$zona_pista, $tipo_reserva);
-				//echo $tipo_pista."-".$zona_pista."--".$tipo_reserva;
 			}
 			else if((strcmp($tipo_pista, "Tenis") == 0) || (strcmp($tipo_pista, "Padel") == 0) || (strcmp($tipo_pista, "Volley_playa") == 0)){
 				if($hora <= "12"){//antes del mediodia

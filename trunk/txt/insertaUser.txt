@@ -15,7 +15,6 @@
 
 		
 		if (strcmp($pass, $reppass) == 0){
-			//echo $pass.$fecha_reg.$fecha;
 			$pass = hash("sha256",$pass.$fecha_reg.$fecha);
 			$BDD = new Mysql();	
 			$row = $BDD->insertarUser($user, $correo, $pass, $nombre, $apellidos, $fecha, $provincia,$fecha_reg);		
@@ -38,12 +37,12 @@
 				}
 				
 			} else {			
-				$_SESSION['error'] = "Hubo un problema al registrar. Intente nuevamente m√°s tarde.";
+				$_SESSION['error'] = "Hubo un problema al registrar. Intente nuevamente m·s tarde.";
 				$_SESSION['logueado'] = false;	
 				
 			}
 		} else {		
-			$_SESSION['error'] = "No fue posible realizar el registro. Las contrase√±as no coinciden.";
+			$_SESSION['error'] = "No fue posible realizar el registro. Las contraseÒas no coinciden.";
 			$_SESSION['logueado'] = false;			
 			
 			

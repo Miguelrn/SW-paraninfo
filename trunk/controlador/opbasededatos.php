@@ -2,20 +2,20 @@
 
 class Mysql { // estaba puesto en minúsculas todo
   
-   	private $host="localhost";
+   	/*private $host="localhost";
     private $user="root";
     private $clave="";
     private $bd="deportesucm";
     private $conexion;  
-    private $sql;
+    private $sql;*/
 	
 	
-	/*private $host="mysql.nixiweb.com";
+	private $host="mysql.nixiweb.com";
     private $user="u528687211_root";
     private $clave="94019401";
     private $bd="u528687211_depor";
     private $conexion;  
-    private $sql;*/
+    private $sql;
 	
 	
 	public function limpia_sql($texto){

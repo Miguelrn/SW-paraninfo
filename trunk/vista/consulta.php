@@ -12,7 +12,8 @@
 		<?php 	
 			$fecha_actual = strtotime(date("d-m-Y",time()));
 			$fecha_entrada = strtotime($fecha);
-			if($fecha_actual >= $fecha_entrada){
+			$hora_actual = date("G",time()) + 6;//la hora del servidor es la de NY
+			if($fecha_actual > $fecha_entrada){
 				echo "<h3>No puedes reservar en una fecha pasada</h3>";
 				//$_SESSION['error'] = "No puedes reservar en una fecha pasada";
 				//header('Location: ./vista/contenido.php');

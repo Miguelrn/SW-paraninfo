@@ -17,17 +17,16 @@
 		$total = 0;		
 		for ($i=0, $len=count($reservas); $i<$len; $i++) {
 			echo $reservas[$i][1];
-			echo "	".$reservas[$i][5]."â‚¬";
+			echo "	".$reservas[$i][5]."€";
 			echo "</br>";
 			
 			$total = $total + $reservas[$i][5];//el precio
 		}		
 	?>
-	<h3>Total: <?php echo $total ?>â‚¬</h3>
+	<h3>Total: <?php echo $total ?>€</h3>
 	<input type="numeric" requiered="" placeholder="Datos bancarios"/></br>
 	<input type="submit" value="Comprar" class="btn-xs btn-info"/>
 </form>
-	 <!-- FALTA COMPROBAR QUE LAS PISTAS NO ESTEN REPETIDAS Y QUE SIGAN ESTANDO LIBRES -->
 		
 
 	

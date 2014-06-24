@@ -24,6 +24,9 @@
 	En el apartado Entrega P2 se detallan el mapa del sitio, con las distintas opciones de navegaci&oacute;n 
 	y una breve descripci&oacute;n con la informaci&oacute;n de dise&ntilde;o del sitio web.	
 	</p>
+	<p>
+	En el apartado Entrega P3 se detalla el diagrama con la estructura de componentes del sitio web.
+	</p>
 	
 	<?php } else if($_SESSION['logueado'] && $_SESSION['tipo'] == 0){ ?>
 		
@@ -45,4 +48,3 @@
 	</p>
 	
 	<?php } ?>
-	

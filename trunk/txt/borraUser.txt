@@ -12,4 +12,4 @@
 	
 	header('Location: ../vista/muestraUsuarios.php');
 	
-?>
+?>s

@@ -5,7 +5,6 @@
    		$BDD = new Mysql();
 		$pistas = $BDD->limpia_sql($_GET['pistas']);
 	    $id = $BDD->limpia_sql($_GET['id']);
-		//echo $pistas;
 		$BDD = new Mysql();
 		$row = $BDD->updateNumeroPistas($id, $pistas);
 		
