@@ -38,6 +38,12 @@
 	function pedidosUser(){
 		$('#zona_central').load('./vista/pedidosUser.php');
 	}
+	function componentes(){
+		$('#zona_central').load('./vista/componentes.php');
+	}
+	function codigo(){
+		$('#zona_central').load('./vista/codigo.php');
+	}
 </script>
 
 <fieldset>
@@ -85,9 +91,14 @@
 					<!--<li><a href="#">nada</a></li>-->
 				</ul>
 			</li>
+			<li><a href="#">Entrega P3</a>
+				<ul class="otros">
+					<li><a href="#" onclick="componentes()">Componentes y Nav.</a></li>
+					<li><a href="#" onclick="codigo()">Código fuente</a></li>
+				</ul>
+			</li>
 
 		<?php } ?>
 		
 	</ul>
 </fieldset>
-

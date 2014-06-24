@@ -11,7 +11,15 @@
 	</div>
 
 	<div class="text-right">
-		<a href="mailto:ivmendez@ucm.es"> Ivan Mendez Jimenez</a> y <a href="mailto:miguel9401@gmail.com">Miguel Rodriguez Navarro</a> - 2014
+		<a href="mailto:ivmendez@ucm.es"> Ivan Mendez Jimenez</a> y <a 			href="mailto:miguel9401@gmail.com">Miguel Rodriguez Navarro</a> - 2014
 	</div>
 
+	<div id="estadisticas">
+		<!-- Begin Motigo Webstats counter code -->
+		<a id="mws4950085" href="http://webstats.motigo.com/">
+		<img width="80" height="15" border="0" alt="Free counter and web stats" 	src="http://m1.webstats.motigo.com/n80x15.gif?id=AEuIRQAASfcNU7lNDf_fHRr92n0A" /></a>
+		<script src="http://m1.webstats.motigo.com/c.js?id=4950085&amp;lang=ES&amp;i=3" type="text/javascript"></script>
+		<!-- End Motigo Webstats counter code -->
+
+	</div>
 </div>

@@ -3,16 +3,14 @@
 	include_once '../controlador/opbasededatos.php';
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
    		$BDD = new Mysql();
-	    $nombreUser = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['user']))));
-	    $pass = $BDD->limpia_sql(htmlspecialchars(trim(strip_tags($_POST['pass']))));
+	    $nombreUser = $BDD->limpia_sql($_POST['user']);
+	    $pass = $BDD->limpia_sql($_POST['pass']);
 		
 		$r = $BDD->consultaUser($nombreUser);
 		
 		if(!isset($_SESSION['logueado'])) $_SESSION['logueado'] = false;
 
 		$pass = hash("sha256",$pass.$r['fecha_registro'].$r['fecha']);
-		
-
 		$row = $BDD->conseguirDatosUsuario($nombreUser, $pass);
 		
 		if ($_SESSION['logueado'] == false && $row){

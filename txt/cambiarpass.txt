@@ -29,10 +29,10 @@
 				$newcont = hash("sha256",$newcont.$fecha_reg.$fecha);
 				$BDD->updatePassUsuario($id, $newcont);
 			}
-			else $_SESSION['error'] = "Las contraseÃ±as no coinciden";
+			else $_SESSION['error'] = "Las contraseñas no coinciden";
 			
 		}
-		else $_SESSION['error'] = "La contraseÃ±a no es correcta";
+		else $_SESSION['error'] = "La contraseña no es correcta";
 	}
 	header('Location: ../index.php');
 
